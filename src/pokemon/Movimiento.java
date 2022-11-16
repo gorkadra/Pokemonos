@@ -1,18 +1,18 @@
 package pokemon;
 public abstract class Movimiento {
-    //atributuak
+    //atributos
     private int tipo;
     private String descripcion;
     private int id;
     private int precio;
-    //eraikitzailea
+    //constructor
     public Movimiento(int pTipo, String pDescripcion, int pId,int pPrecio) {
         this.tipo = pTipo;
         this.descripcion = pDescripcion;
         this.id = pId;
         this.precio = pPrecio;
     }
-    //gainontzeko metodoak
+    //metodos
     public int getTipo() {
         return this.tipo;
     }
