@@ -7,10 +7,10 @@ public abstract class Movimiento {
     private int precio;
     //eraikitzailea
     public Movimiento(int pTipo, String pDescripcion, int pId,int pPrecio) {
-        this.tipoa = pTipo;
-        this.deskripzioa = pDescripcion;
+        this.tipo = pTipo;
+        this.descripcion = pDescripcion;
         this.id = pId;
-        this.prezioa = pPrecio;
+        this.precio = pPrecio;
     }
     //gainontzeko metodoak
     public int getTipo() {
