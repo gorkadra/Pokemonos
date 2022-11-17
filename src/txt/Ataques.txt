@@ -1,18 +1,18 @@
-2,"Ur Pistola (ura)",1,15,40);
-2,"Surf (ura)",2,15,90
-2,"Burbuila Izpia (ura)",3,15,65
+2,"Pistola Agua (Agua)",1,False,40;
+2,"Surf (agua)",2,False,90
+2,"Burbuila Izpia (ura)",3,False,65
 2,"Kaskada (ura)",4,15,90
 2,"AquaJet (ura)",5,15,40
 2,"Burbuila (ura)",6,15,40
 2,"Hidrokanoia (ura)",7,15,110
 1,"Hosto Erorera (sua)",8,15,110
 1,"Zartada (sua)",9,15,80
-1,"Energibola (sua)",10,15,75
+1,"Energibola (Planta)",10,15,75
 1,"Hosto Magikoa (sua)",11,15,60
 1,"Latigo Zepa (sua)",12,15,40
 1,"Tormenta Florala (sua)",13,15,80
 1,"Hostotza (sua) ",14,15,40
-3,"Askua (belarra)",15,15,40
+3,"Ascuas (belarra)",15,15,40
 3,"Llamarada (belarra)",16,15,110
 3,"Lanzallamas (belarra)",17,15,90
 3,"Su Ukabila (belarra)",18,15,75

@@ -4,8 +4,8 @@ public class MovimientoAtaque extends Movimiento {
     //atributos
     private int potencia;
     //constructor
-    public MovimientoAtaque(int pTipo, String pDescripcion, int pId,int pPrecio, int pPotencia) {
-        super(pTipo,pDescripcion,pId,pPrecio);
+    public MovimientoAtaque(int pTipo, String pDescripcion, int pId,boolean pCat, int pPotencia) {
+        super(pTipo,pDescripcion,pId,pCat);
         this.potencia = pPotencia;
     }
     //metodos

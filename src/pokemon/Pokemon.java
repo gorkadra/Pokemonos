@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class Pokemon {
 	//atributos
-	private String nombre ;
+	private String nombre;
 	private int id;
 	private float vida;
 	private float vidaMax;
