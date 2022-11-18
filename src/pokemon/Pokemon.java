@@ -105,6 +105,7 @@ public class Pokemon {
 				if(this.defensaSp > 2*poke.getDefensaSp()) {
 					throw new DemasiadaDefException();
 				}
+
 			}
 		}catch(DemasiadaDefException e) {
 			e.imprimirMensaje();
