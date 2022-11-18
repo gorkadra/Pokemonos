@@ -1,7 +1,7 @@
 //Para crear la tabla de tipos
 //tipo "0" = Fuego; tipo "1" = Agua; tipo "2" = Planta; tipo "3" = Normal; tipo "4" = Fantasma
 //Fuego
-//La estructura que sigue es: tipo atacante, tipo atacado, efectividad
+//La estructura que sigue es: tipo atacante, tipo atacado y efectividad
 0,0,1.0
 0,1,0.5
 0,2,2.0

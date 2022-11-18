@@ -1,52 +1,52 @@
-2,"Pistola Agua (Agua)",1,False,40;
-2,"Surf (agua)",2,False,90
-2,"Burbuila Izpia (ura)",3,False,65
-2,"Kaskada (ura)",4,15,90
-2,"AquaJet (ura)",5,15,40
-2,"Burbuila (ura)",6,15,40
-2,"Hidrokanoia (ura)",7,15,110
-1,"Hosto Erorera (sua)",8,15,110
-1,"Zartada (sua)",9,15,80
-1,"Energibola (Planta)",10,15,75
-1,"Hosto Magikoa (sua)",11,15,60
-1,"Latigo Zepa (sua)",12,15,40
-1,"Tormenta Florala (sua)",13,15,80
-1,"Hostotza (sua) ",14,15,40
-3,"Ascuas (belarra)",15,15,40
-3,"Llamarada (belarra)",16,15,110
-3,"Lanzallamas (belarra)",17,15,90
-3,"Su Ukabila (belarra)",18,15,75
-3,"Enbite  Igneo (belarra)",19,15,100
-3,"Eztanda (belarra)",20,15,110
-3,"Su Gurpila (belarra)",21,15,60
-4,"Plakaia (normal)",22,15,40
-4,"Labankada (normal)",23,15,90
-4,"Sasi-Zaplasteko (normal)",24,15,35
-4,"Atake Bizkorra (normal)",25,15,45
-4,"Abiadura Max (normal)",26,15,90
-4,"Min Sekretua (normal)",27,15,70
-4,"Hiperizpia (normal)",28,15,120
-5,"Itzal Ukabila (fantasma)",29,15,60
-5,"Garra Itzaltsua (fantasma)",30,15,90
-5,"Psikiko (fantasma)",31,15,60
-5,"Haize Iluna (fantasma)",32,15,60
-5,"Psikokarga (fantasma)",33,15,80
-5,"Bonba Azidoa (fantasma)",34,15,40
-5,"Buztan Pozoitsua (fantasma)",35,15,70
-2,"Errefuxioa (defentsa igo)",36,15,(float)1.15,"Defentsa",true
-2,"Akua Aro (PS-ak berreskuratzen ditu)",37,15,(float)1.1,"BizitzaPuntuak",true
-2,"Ur Dantza (atakeek boost bat jaso)",38,15,(float)1.08,"Atake",true
-1,"Kotoiespora (Abiadura kendu aurkariari)",39,15,(float)0.9,"Abiadura",false
-3,"Egun Eguzkitsua (Atakea igo)",40,15,(float)1.15,"Atake",true
-4,"Latigo (Defentsa jaitsi aurkariari)",41,15,(float)0.93,"Defentsa",false
-4,"Kurrinka (Atakea igo)",42,15,(float)1.07,"Atake",true
-4,"Errekuperazioa (PS totalen erdia errekuperatu)",43,15,(float)1.5,"BizitzaPuntuak",true
-4,"Defentsa Kizkurar (Defentsa igo)",44,15,(float)1.1,"Defentsa",true
-4,"Afilatu (Atakea igo)",45,15,(float)1.1,"Atake",true
-4,"Ekipo Bikoitza (Abiadura igo)",46,15,(float)1.1,"Abiadura",true
-4,"Susto Aurpegia (Abiadura jaitsi aurkariari)",47,15,(float)0.93,"Abiadura",false
-5,"Masa Kosmikoa (Defentsa igo)",48,15,(float)1.08,"Defentsa",true
-4,"Barrera (Defentsa igo)",49,15,(float)0.9,"Defentsa",false
-4,"Agilitatea (Abiadura igo)",50,15,(float)1.1,"Abiadura",true
-1,"Kotoi Bira (Defentsa igo)",51,15,(float)1.15,"Defentsa",true//mirar las ip-s
-1,"Indarxurga (Atakea kendu aurkariari)",521,15,(float)0.91,"Atake",false
+2,Pistola Agua (Agua),1,False,40
+2,Surf (agua),2,False,90
+2,Burbuila Izpia (ura),3,False,65
+2,Kaskada (ura),4,15,90
+2,AquaJet (ura),5,15,40
+2,Burbuila (ura),6,15,40
+2,Hidrokanoia (ura),7,15,110
+1,Hosto Erorera (sua),8,15,110
+1,Zartada (sua),9,15,80
+1,Energibola (Planta),10,15,75
+1,Hosto Magikoa (sua),11,15,60
+1,Latigo Zepa (sua),12,15,40
+1,Tormenta Florala (sua),13,15,80
+1,Hostotza (sua),14,15,40
+3,Ascuas (belarra),15,15,40
+3,Llamarada (belarra),16,15,110
+3,Lanzallamas (belarra),17,15,90
+3,Su Ukabila (belarra),18,15,75
+3,Enbite  Igneo (belarra),19,15,100
+3,Eztanda (belarra),20,15,110
+3,Su Gurpila (belarra),21,15,60
+4,Plakaia (normal),22,15,40
+4,Labankada (normal),23,15,90
+4,Sasi-Zaplasteko (normal),24,15,35
+4,Atake Bizkorra (normal),25,15,45
+4,Abiadura Max (normal),26,15,90
+4,Min Sekretua (normal),27,15,70
+4,Hiperizpia (normal),28,15,120
+5,Itzal Ukabila (fantasma),29,15,60
+5,Garra Itzaltsua (fantasma),30,15,90
+5,Psikiko (fantasma),31,15,60
+5,Haize Iluna (fantasma),32,15,60
+5,Psikokarga (fantasma),33,15,80
+5,Bonba Azidoa (fantasma),34,15,40
+5,Buztan Pozoitsua (fantasma),35,15,70
+2,Errefuxioa (defentsa igo),36,15,1.15,Defentsa,true
+2,Akua Aro (PS-ak berreskuratzen ditu),37,15,1.1,BizitzaPuntuak,true
+2,Ur Dantza (atakeek boost bat jaso),38,15,1.08,Atake,true
+1,Kotoiespora (Abiadura kendu aurkariari),39,15,0.9,Abiadura,false
+3,Egun Eguzkitsua (Atakea igo),40,15,1.15,Atake,true
+4,Latigo (Defentsa jaitsi aurkariari),41,15,0.93,Defentsa,false
+4,Kurrinka (Atakea igo),42,15,1.07,Atake,true
+4,Errekuperazioa (PS totalen erdia errekuperatu),43,15,1.5,BizitzaPuntuak,true
+4,Defentsa Kizkurar (Defentsa igo),44,15,.1,Defentsa,true
+4,Afilatu (Atakea igo),45,15,1.1,Atake,true
+4,Ekipo Bikoitza (Abiadura igo),46,15,1.1,Abiadura,true
+4,Susto Aurpegia (Abiadura jaitsi aurkariari),47,15,0.93,Abiadura,false
+5,Masa Kosmikoa (Defentsa igo),48,15,1.08,Defentsa,true
+4,Barrera (Defentsa igo),49,15,)0.9,Defentsa,false
+4,Agilitatea (Abiadura igo),50,15,1.1,Abiadura,true
+1,Kotoi Bira (Defentsa igo),51,15,1.15,Defentsa,true
+1,Indarxurga (Atakea kendu aurkariari),521,15,0.91,Atake,false
