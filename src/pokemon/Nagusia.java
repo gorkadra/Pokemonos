@@ -1,5 +1,7 @@
 package pokemon;
 
+import txt.Lector;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,11 +17,12 @@ public class Nagusia {
 	
 	System.out.println();
 	
-	System.out.println("Sartu Pokemonaren izena:");
-	String deitura;
-	deitura=lag.nextLine();
-	
 
+
+	Lector miLector = new Lector();
+	miLector.leerTipos();
+	miLector.leerPokemons();
+	miLector.leerAtaques();
 	
 
 	

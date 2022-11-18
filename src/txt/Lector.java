@@ -19,6 +19,7 @@ public class Lector {
 
             while(sc.hasNext()){
                 String lineatxt=sc.nextLine();
+                System.out.println(lineatxt);
                 String[] listadeLinea = lineatxt.split(",");
                 if(listadeLinea.length==3){
                     linea = Integer.parseInt(listadeLinea[0]);
@@ -46,6 +47,7 @@ public class Lector {
             float velocidad;
             float defensa;
             int tipo;
+            int tipo2;
             float ataquesp;
             float defensasp;
             while(sc.hasNext()){
@@ -64,6 +66,21 @@ public class Lector {
                     defensasp = (float) Integer.parseInt(listadeLinea[8]);
 
                     Pokemon poke = new Pokemon(nombre,id,vida,ataque,velocidad,defensa,tipo,ataquesp,defensasp);
+                    Pokedex.getMiPokedex().getMiLista().addPokemon(poke);
+                }
+                else if(listadeLinea.length==10){
+                    nombre = listadeLinea[0];
+                    id = Integer.parseInt(listadeLinea[1]);
+                    vida = (float) Integer.parseInt(listadeLinea[2]);
+                    ataque = (float) Integer.parseInt(listadeLinea[3]);
+                    velocidad = (float) Integer.parseInt(listadeLinea[4]);
+                    defensa = (float) Integer.parseInt(listadeLinea[5]);
+                    tipo = Integer.parseInt(listadeLinea[6]);
+                    tipo2 = Integer.parseInt(listadeLinea[7]);
+                    ataquesp = (float) Integer.parseInt(listadeLinea[8]);
+                    defensasp = (float) Integer.parseInt(listadeLinea[9]);
+
+                    Pokemon poke = new Pokemon(nombre,id,vida,ataque,velocidad,defensa,tipo,tipo2,ataquesp,defensasp);
                     Pokedex.getMiPokedex().getMiLista().addPokemon(poke);
                 }
                 else{
@@ -91,6 +108,7 @@ public class Lector {
             boolean propioBool;
             while(sc.hasNext()){
                 String linea=sc.nextLine();
+                System.out.println(linea);
                 String[] listadeLinea = linea.split(",");
 
                 if(listadeLinea.length==5){
@@ -119,7 +137,6 @@ public class Lector {
                     else{
                         catBool=false;
                     }
-                    System.out.println(listadeLinea[4]);
                     booster = Float.parseFloat(listadeLinea[4]);
                     estadistica = listadeLinea[5];
                     propio =  listadeLinea[6];
