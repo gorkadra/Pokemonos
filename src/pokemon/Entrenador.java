@@ -43,7 +43,7 @@ public abstract class Entrenador {
             if(!esta) {
                 numLista[i] = numAleatorio;
                 Pokemon mom = Pokedex.getMiPokedex().crearPokemon(numAleatorio);
-                Pokemon copia = new Pokemon(mom.getNombre(),mom.getId(), mom.getVida(), mom.getAtaque(), mom.getVeloc(), mom.getDefensa(), mom.getTipo(), mom.getAtaquesp(), mom.getDefensasp());
+                Pokemon copia = new Pokemon(mom.getNombre(),mom.getId(), mom.getVida(), mom.getAtaque(), mom.getVeloc(), mom.getDefensa(), mom.getTipo(), mom.getAtaqueSp(), mom.getDefensaSp());
                 copia.setVidaMax(mom.getVida());
                 copia.setListaMovi(mom.getMiLista());
                 listaPokemon.addPokemon(copia);
