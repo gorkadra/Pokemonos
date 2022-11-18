@@ -34,8 +34,8 @@ public class Teclado {
             }
             else {
                 try {
-                    Integer num = Integer.parseInt(num);
-                    if(num > 4) {
+                    Integer numero = Integer.parseInt(num);
+                    if(numero > 4) {
                         throw new NumberFormatException();
                     }
                     adec=true;
