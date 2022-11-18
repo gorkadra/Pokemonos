@@ -22,9 +22,6 @@ public class Entrenatzailea extends Jokalaria{
 	System.out.println("Izena: "+pIzena+" Puntuak: "+this.puntuazioAkum+"");
 	}
 	
-	public void gehituPokemon (Pokemon pPokemon){
-		if(super.lista.getTamaina()==0){
-			super.lista.gehituPokemon(pPokemon);
-	}
-	}
+
+
 }

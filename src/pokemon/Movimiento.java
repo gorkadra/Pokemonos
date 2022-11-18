@@ -1,18 +1,18 @@
 package pokemon;
 public abstract class Movimiento {
-    //atributuak
+    //atributos
     private int tipo;
     private String descripcion;
     private int id;
-    private int precio;
-    //eraikitzailea
-    public Movimiento(int pTipo, String pDescripcion, int pId,int pPrecio) {
+    private boolean categoria; //fisico (T) o especial(F)
+    //constructor
+    public Movimiento(int pTipo, String pDescripcion, int pId,boolean pCat) {
         this.tipo = pTipo;
         this.descripcion = pDescripcion;
         this.id = pId;
-        this.precio = pPrecio;
+        this.categoria = pCat;
     }
-    //gainontzeko metodoak
+    //metodos
     public int getTipo() {
         return this.tipo;
     }
@@ -20,8 +20,8 @@ public abstract class Movimiento {
     public int getId() {
         return this.id;
     }
-    public int getPrecio() {
-        return this.precio;
+    public boolean getCat() {
+        return this.categoria;
     }
     public String getDescripcion() {
         return this.descripcion;

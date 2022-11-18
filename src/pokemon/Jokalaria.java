@@ -15,7 +15,7 @@ public abstract class Jokalaria {
 	
 	//metodoak
 	
-	public abstract void gehituPokemon(Pokemon pPokemon);
+
 	
 	public abstract void gehituPuntuazioa(String pIzena);
 }
