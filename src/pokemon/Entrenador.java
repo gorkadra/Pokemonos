@@ -61,5 +61,5 @@ public abstract class Entrenador {
             loop = 0;
         }
     }
-    public abstract Movimiento usarMovimiento(Pokemon pPoke);
+    public abstract Movimiento usarMovi(Pokemon pPoke);
 }
