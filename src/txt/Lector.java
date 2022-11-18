@@ -9,6 +9,8 @@ import pokemon.*;
 
 public class Lector {
 
+    public Lector(){}
+
     public void leerTipos(){
         try{
             Scanner sc=new Scanner(new FileReader("src/txt/Tipos.txt"));
@@ -19,7 +21,9 @@ public class Lector {
 
             while(sc.hasNext()){
                 String lineatxt=sc.nextLine();
+                System.out.println(lineatxt);
                 String[] listadeLinea = lineatxt.split(",");
+                System.out.println(listadeLinea[0]);
                 if(listadeLinea.length==3){
                     linea = Integer.parseInt(listadeLinea[0]);
                     columna = Integer.parseInt(listadeLinea[1]);
@@ -86,7 +90,7 @@ public class Lector {
             int potencia;
             float booster;
             String estadistica;
-            String propio
+            String propio;
             boolean propioBool;
             while(sc.hasNext()){
                 String linea=sc.nextLine();
@@ -111,7 +115,7 @@ public class Lector {
                     tipo = Integer.parseInt(listadeLinea[0]);
                     descripcion = listadeLinea[1];
                     id = Integer.parseInt(listadeLinea[2]);
-                    cat = listadeLinea[3]);
+                    cat = listadeLinea[3];
                     if (cat=="true"){
                         catBool=true;
                     }
