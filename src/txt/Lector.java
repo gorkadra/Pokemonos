@@ -126,27 +126,20 @@ public class Lector {
                     MovimientoAtaque movAtac = new MovimientoAtaque(tipo,descripcion,id,catBool,potencia);
                     ColeccionMovi.getMiListaMovi().getMiLista().addMovi(movAtac);
                 }
-                else if(listadeLinea.length==7){
+                else if(listadeLinea.length==6){
                     tipo = Integer.parseInt(listadeLinea[0]);
                     descripcion = listadeLinea[1];
                     id = Integer.parseInt(listadeLinea[2]);
-                    cat = listadeLinea[3];
-                    if (cat=="true"){
-                        catBool=true;
-                    }
-                    else{
-                        catBool=false;
-                    }
-                    booster = Float.parseFloat(listadeLinea[4]);
-                    estadistica = listadeLinea[5];
-                    propio =  listadeLinea[6];
+                    booster = Float.parseFloat(listadeLinea[3]);
+                    estadistica = listadeLinea[4];
+                    propio =  listadeLinea[5];
                     if (propio=="true"){
                         propioBool=true;
                     }
                     else{
                         propioBool=false;
                     }
-                    MovimientoStat movStat = new MovimientoStat(tipo,descripcion,id,catBool,booster,estadistica,propioBool);
+                    MovimientoStat movStat = new MovimientoStat(tipo,descripcion,id,booster,estadistica,propioBool);
                     ColeccionMovi.getMiListaMovi().getMiLista().addMovi(movStat);
                 }
                 else{

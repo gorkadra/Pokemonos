@@ -3,13 +3,14 @@ package pokemon;
 public class ImagenesPokemon {
     //atributos
     private static ImagenesPokemon miImagenesPokemon = null;
-    //Eraikitzailea
-    private ImagenesPokemon() {
+    //Constructor
+    private void ImagenesPokemon() {
+        miImagenesPokemon=new ImagenesPokemon();
 
     }
     public static ImagenesPokemon getMiImagenesPokemon() {
-        if(miImagenesPokemon() ==null) {
-            miImagenesPokemon() = new ImagenesPokemon();
+        if(miImagenesPokemon ==null) {
+            miImagenesPokemon = new ImagenesPokemon();
         }
         return miImagenesPokemon;
     }
