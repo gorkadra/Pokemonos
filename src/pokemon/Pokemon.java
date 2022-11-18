@@ -1,5 +1,7 @@
 package pokemon;
 
+import exception.*;
+
 import java.util.Iterator;
 
 public class Pokemon {
@@ -46,11 +48,11 @@ public class Pokemon {
 					throw new DemasiadoAtaqueException();
 				}
 			}
-		}catch(DemasiadoAtaque e) {
-			e.imprimirMsj();
+		}catch(DemasiadoAtaqueException e) {
+			e.imprimirMensaje();
 			this.ataque = 2*poke.getAtaque();
-		}catch(AtaqueBajo e) {
-			e.imprimirMsj();
+		}catch(AtaqueBajoException e) {
+			e.imprimirMensaje();
 			this.ataque = (float) (0.5*poke.getAtaque());
 		}
 	}
@@ -69,10 +71,10 @@ public class Pokemon {
 				}
 			}
 		}catch(DemasiadaDefException e) {
-			e.imprimirMsj();
+			e.imprimirMensaje();
 			this.defensa = 2*poke.getDefensa();
 		}catch(DefensaBajaException e) {
-			e.imprimirMsj();
+			e.imprimirMensaje();
 			this.defensa = (float) (0.5*poke.getDefensa());
 		}
 	}
@@ -119,10 +121,10 @@ public class Pokemon {
 				}
 			}
 		}catch(DemasiadaVelException e) {
-			e.imprimirMsj();
+			e.imprimirMensaje();
 			this.veloc = 2*poke.getVeloc();
 		}catch(BajaVelException e) {
-			e.imprimirMsj();
+			e.imprimirMensaje();
 			this.veloc = (float) (0.5*poke.getVeloc());
 		}
 	}
@@ -137,7 +139,7 @@ public class Pokemon {
 				throw new DemasiadaVidaException();
 			}
 		}catch(DemasiadaVidaException e) {
-			e.imprimirMsj();
+			e.imprimirMensaje();
 			this.vida = poke.getVida();
 		}
 	}
@@ -210,7 +212,7 @@ public class Pokemon {
 				if(!hay) {
 					movim = ColeccionMovi.getMiListaMovi().aplicarMovi(numRandom);//aleatorioki erabakitako mugimendua bariable batean gordetzeko
 					if(!primerMoviAtaque) {//gutxienez eraso bat eraso mugimenduarena izateko
-						if(movim instanceof MovimientoAtaque && this.getTipo()==movim.getTipoa()) {
+						if(movim instanceof MovimientoAtaque && this.getTipo()==movim.getTipo()) {
 							this.listaMovi.addMovi(movim); // uneko pokemonari bere lista mugimenduan gordetzeko
 						}
 						else {

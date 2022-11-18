@@ -46,7 +46,7 @@
 4,Ekipo Bikoitza (Abiadura igo),46,15,1.1,Abiadura,true
 4,Susto Aurpegia (Abiadura jaitsi aurkariari),47,15,0.93,Abiadura,false
 5,Masa Kosmikoa (Defentsa igo),48,15,1.08,Defentsa,true
-4,Barrera (Defentsa igo),49,15,)0.9,Defentsa,false
+4,Barrera (Defentsa igo),49,15,0.9,Defentsa,false
 4,Agilitatea (Abiadura igo),50,15,1.1,Abiadura,true
 1,Kotoi Bira (Defentsa igo),51,15,1.15,Defentsa,true
 1,Indarxurga (Atakea kendu aurkariari),521,15,0.91,Atake,false

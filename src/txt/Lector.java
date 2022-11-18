@@ -27,7 +27,7 @@ public class Lector {
                 if(listadeLinea.length==3){
                     linea = Integer.parseInt(listadeLinea[0]);
                     columna = Integer.parseInt(listadeLinea[1]);
-                    valor = (float) Integer.parseInt(listadeLinea[2]);
+                    valor = Float.parseFloat(listadeLinea[2]);
                     TablaTipos.getMiTablaTipos().setNum(linea,columna,valor);
                 }
                 else{
@@ -54,6 +54,7 @@ public class Lector {
             float defensasp;
             while(sc.hasNext()){
                 String linea=sc.nextLine();
+                System.out.println(linea);
                 String[] listadeLinea = linea.split(",");
                 if(listadeLinea.length==9){
                     nombre = listadeLinea[0];
@@ -122,7 +123,8 @@ public class Lector {
                     else{
                         catBool=false;
                     }
-                    booster = (float) Integer.parseInt(listadeLinea[4]);
+                    System.out.println(listadeLinea[4]);
+                    booster = Float.parseFloat(listadeLinea[4]);
                     estadistica = listadeLinea[5];
                     propio =  listadeLinea[6];
                     if (propio=="true"){
