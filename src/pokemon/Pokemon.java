@@ -230,12 +230,6 @@ public class Pokemon {
 	public float getDefensa() {
 		return this.defensa;
 	}
-	public float getAtaqueSp() {
-		return this.ataqueSp;
-	}
-	public float getDefensaSp() {
-		return this.defensaSp;
-	}
 	public int[] getTipo() {
 		return this.tipo;
 	}
