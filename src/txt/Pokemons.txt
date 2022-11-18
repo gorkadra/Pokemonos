@@ -1,3 +1,8 @@
+//Los pokemon mono tipo tienen estructura:
+//nombre-id-vida-ataque-velocidad-defensa-tipo-ataquesp-defensasp
+//Los pokemon de dos tipos tienen estructura:
+//nombre-id-vida-ataque-velocidad-defensa-tipo1-tipo2-ataquesp-defensasp
+
 Venusaur,1,270,152,148,153,0,100,100
 Tangela,2,240,103,112,211,0,100,100
 Exeggutor,3,300,175,103,157,0,100,100
