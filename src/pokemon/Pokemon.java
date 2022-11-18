@@ -13,7 +13,7 @@ public class Pokemon {
 	private float ataque;
 	private float veloc;
 	private ListaMovi listaMovi;
-	private int tipo;
+	private int[] tipo = new int[2];
 	private float defensa;
 	private float ataqueSp;
 	private float defensaSp;
@@ -25,7 +25,20 @@ public class Pokemon {
 		this.ataque = pAtaque;
 		this.veloc = pVeloc;
 		this.defensa = pDefensa;
-		this.tipo = pTipo;
+		this.tipo[0] = pTipo;
+		this.ataqueSp = pAtaqueSp;
+		this.defensaSp = pDefensaSp;
+		this.listaMovi = new ListaMovi();
+	}
+	public Pokemon(String pNombre,int pId,float pVida, float pAtaque, float pVeloc, float pDefensa,int pTipo1,int pTipo2, float pDefensaSp, float pAtaqueSp) {
+		this.nombre = pNombre;
+		this.id = pId;
+		this.vida = pVida;
+		this.ataque = pAtaque;
+		this.veloc = pVeloc;
+		this.defensa = pDefensa;
+		this.tipo[0] = pTipo1;
+		this.tipo[1] = pTipo2;
 		this.ataqueSp = pAtaqueSp;
 		this.defensaSp = pDefensaSp;
 		this.listaMovi = new ListaMovi();
@@ -76,6 +89,53 @@ public class Pokemon {
 		}catch(DefensaBajaException e) {
 			e.imprimirMensaje();
 			this.defensa = (float) (0.5*poke.getDefensa());
+		}
+	}
+
+	public void setDefensaSp(float booster) {
+		Pokemon poke = Pokedex.getMiPokedex().getMiLista().buscarPokemonId(this.getId());
+		try {
+			this.defensaSp = this.defensaSp*booster;
+			if(booster < 1.0) {
+				if(this.defensaSp < 0.5*poke.getDefensaSp()) {
+					throw new DefensaBajaException();
+				}
+			}
+			else {
+				if(this.defensaSp > 2*poke.getDefensaSp()) {
+					throw new DemasiadaDefException();
+				}
+
+			}
+		}catch(DemasiadaDefException e) {
+			e.imprimirMensaje();
+			this.defensaSp = 2*poke.getDefensaSp();
+		}catch(DefensaBajaException e) {
+			e.imprimirMensaje();
+			this.defensaSp = (float) (0.5*poke.getDefensaSp());
+		}
+	}
+
+	public void setAtaqueSp(float booster) {
+		Pokemon poke = Pokedex.getMiPokedex().getMiLista().buscarPokemonId(this.getId());
+		try {
+			this.ataqueSp = this.ataqueSp*booster;
+			if(booster < 1.0) {
+				if(this.ataqueSp < 0.5*poke.getAtaqueSp()) {
+					throw new AtaqueBajoException();
+				}
+			}
+			else {
+				if(this.ataqueSp > 2*poke.getAtaqueSp()) {
+					throw new DemasiadoAtaqueException();
+				}
+			}
+		}catch(DemasiadoAtaqueException e) {
+			e.imprimirMensaje();
+			this.ataqueSp = 2*poke.getAtaqueSp();
+		}catch(AtaqueBajoException e) {
+			e.imprimirMensaje();
+			this.ataqueSp = (float) (0.5*poke.getAtaqueSp());
 		}
 	}
 	public String devuelveTipo(int pNum) {
@@ -170,12 +230,14 @@ public class Pokemon {
 	public float getDefensa() {
 		return this.defensa;
 	}
-	public int getTipo() {
+	public int[] getTipo() {
 		return this.tipo;
 	}
 	public ListaMovi getMiLista() {
 		return this.listaMovi;
 	}
+	public float getDefensaSp() {return this.defensaSp;}
+	public float getAtaqueSp() {return this.ataqueSp;}
 	//resto de metodos
 	public Movimiento usarMovi(Integer num) {
 		int i = 1;
@@ -212,26 +274,26 @@ public class Pokemon {
 				if(!hay) {
 					movim = ColeccionMovi.getMiListaMovi().aplicarMovi(numRandom);//aleatorioki erabakitako mugimendua bariable batean gordetzeko
 					if(!primerMoviAtaque) {//gutxienez eraso bat eraso mugimenduarena izateko
-						if(movim instanceof MovimientoAtaque && this.getTipo()==movim.getTipo()) {
+						if(movim instanceof MovimientoAtaque && this.getTipo()[0]==movim.getTipo()) {
 							this.listaMovi.addMovi(movim); // uneko pokemonari bere lista mugimenduan gordetzeko
 						}
 						else {
-							if(this.getTipo()==1) {
+							if(this.getTipo()[0]==1 || this.getTipo()[1]==1) {
 								numRandom = (int) Math.floor(Math.random()*(14-8+1)+8);
 								movim = ColeccionMovi.getMiListaMovi().aplicarMovi(numRandom);
 								this.listaMovi.addMovi(movim);
 							}
-							else if(this.getTipo()==2) {
+							else if(this.getTipo()[0]==2 || this.getTipo()[1]==2) {
 								numRandom = (int) Math.floor(Math.random()*(7-1+1)+1);
 								movim = ColeccionMovi.getMiListaMovi().aplicarMovi(numRandom);
 								this.listaMovi.addMovi(movim);
 							}
-							else if(this.getTipo()==3) {
+							else if(this.getTipo()[0]==3 || this.getTipo()[1]==3) {
 								numRandom = (int) Math.floor(Math.random()*(21-15+1)+15);
 								movim = ColeccionMovi.getMiListaMovi().aplicarMovi(numRandom);
 								this.listaMovi.addMovi(movim);
 							}
-							else if(this.getTipo()==4) {
+							else if(this.getTipo()[0]==4 || this.getTipo()[1]==4) {
 								numRandom = (int) Math.floor(Math.random()*(28-22+1)+22);
 								movim = ColeccionMovi.getMiListaMovi().aplicarMovi(numRandom);
 								this.listaMovi.addMovi(movim);

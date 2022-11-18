@@ -9,8 +9,6 @@ import pokemon.*;
 
 public class Lector {
 
-    public Lector(){}
-
     public void leerTipos(){
         try{
             Scanner sc=new Scanner(new FileReader("src/txt/Tipos.txt"));
@@ -23,7 +21,6 @@ public class Lector {
                 String lineatxt=sc.nextLine();
                 System.out.println(lineatxt);
                 String[] listadeLinea = lineatxt.split(",");
-                System.out.println(listadeLinea[0]);
                 if(listadeLinea.length==3){
                     linea = Integer.parseInt(listadeLinea[0]);
                     columna = Integer.parseInt(listadeLinea[1]);
@@ -50,6 +47,7 @@ public class Lector {
             float velocidad;
             float defensa;
             int tipo;
+            int tipo2;
             float ataquesp;
             float defensasp;
             while(sc.hasNext()){
@@ -70,6 +68,21 @@ public class Lector {
                     Pokemon poke = new Pokemon(nombre,id,vida,ataque,velocidad,defensa,tipo,ataquesp,defensasp);
                     Pokedex.getMiPokedex().getMiLista().addPokemon(poke);
                 }
+                else if(listadeLinea.length==10){
+                    nombre = listadeLinea[0];
+                    id = Integer.parseInt(listadeLinea[1]);
+                    vida = (float) Integer.parseInt(listadeLinea[2]);
+                    ataque = (float) Integer.parseInt(listadeLinea[3]);
+                    velocidad = (float) Integer.parseInt(listadeLinea[4]);
+                    defensa = (float) Integer.parseInt(listadeLinea[5]);
+                    tipo = Integer.parseInt(listadeLinea[6]);
+                    tipo2 = Integer.parseInt(listadeLinea[7]);
+                    ataquesp = (float) Integer.parseInt(listadeLinea[8]);
+                    defensasp = (float) Integer.parseInt(listadeLinea[9]);
+
+                    Pokemon poke = new Pokemon(nombre,id,vida,ataque,velocidad,defensa,tipo,tipo2,ataquesp,defensasp);
+                    Pokedex.getMiPokedex().getMiLista().addPokemon(poke);
+                }
                 else{
                     sc.nextLine();
                 }
@@ -86,6 +99,7 @@ public class Lector {
             int tipo;
             String descripcion;
             int id;
+            int precio;
             String cat;
             boolean catBool;
             int potencia;
@@ -95,35 +109,30 @@ public class Lector {
             boolean propioBool;
             while(sc.hasNext()){
                 String linea=sc.nextLine();
+                System.out.println(linea);
                 String[] listadeLinea = linea.split(",");
 
-                if(listadeLinea.length==5){
+                if(listadeLinea.length==6){
                     tipo = Integer.parseInt(listadeLinea[0]);
                     descripcion = listadeLinea[1];
                     id = Integer.parseInt(listadeLinea[2]);
-                    cat = listadeLinea[3];
+                    precio = Integer.parseInt(listadeLinea[3]);
+                    cat = listadeLinea[4];
                     if (cat=="true"){
                         catBool=true;
                     }
                     else{
                         catBool=false;
                     }
-                    potencia = Integer.parseInt(listadeLinea[4]);
-                    MovimientoAtaque movAtac = new MovimientoAtaque(tipo,descripcion,id,catBool,potencia);
+                    potencia = Integer.parseInt(listadeLinea[5]);
+                    MovimientoAtaque movAtac = new MovimientoAtaque(tipo,descripcion,id,precio,catBool,potencia);
                     ColeccionMovi.getMiListaMovi().getMiLista().addMovi(movAtac);
                 }
                 else if(listadeLinea.length==7){
                     tipo = Integer.parseInt(listadeLinea[0]);
                     descripcion = listadeLinea[1];
                     id = Integer.parseInt(listadeLinea[2]);
-                    cat = listadeLinea[3];
-                    if (cat=="true"){
-                        catBool=true;
-                    }
-                    else{
-                        catBool=false;
-                    }
-                    System.out.println(listadeLinea[4]);
+                    precio = Integer.parseInt(listadeLinea[3]);
                     booster = Float.parseFloat(listadeLinea[4]);
                     estadistica = listadeLinea[5];
                     propio =  listadeLinea[6];
@@ -133,7 +142,7 @@ public class Lector {
                     else{
                         propioBool=false;
                     }
-                    MovimientoStat movStat = new MovimientoStat(tipo,descripcion,id,catBool,booster,estadistica,propioBool);
+                    MovimientoStat movStat = new MovimientoStat(tipo,descripcion,id,precio,booster,estadistica,propioBool);
                     ColeccionMovi.getMiListaMovi().getMiLista().addMovi(movStat);
                 }
                 else{

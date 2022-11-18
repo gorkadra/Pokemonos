@@ -14,13 +14,17 @@ public class Nagusia {
 	String izena;
 	System.out.println("Sartu zure izena:");
 	izena=lag.nextLine();
-	Entrenatzailea jokalari1=new Entrenatzailea("JonBarHD",0);
-	jokalari1.imprimatuta(izena);
 	
-	Lector elLector = new Lector();
-	elLector.leerTipos();
-	elLector.leerPokemons();
-	elLector.leerAtaques();
+	System.out.println();
+	
+
+
+	Lector miLector = new Lector();
+	miLector.leerTipos();
+	miLector.leerPokemons();
+	miLector.leerAtaques();
+	
+
 	
 	System.out.println();
 	

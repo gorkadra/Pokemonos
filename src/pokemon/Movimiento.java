@@ -4,13 +4,14 @@ public abstract class Movimiento {
     private int tipo;
     private String descripcion;
     private int id;
-    private boolean categoria; //fisico (T) o especial(F)
+    private int precio;
+
     //constructor
-    public Movimiento(int pTipo, String pDescripcion, int pId,boolean pCat) {
+    public Movimiento(int pTipo, String pDescripcion, int pId, int pPrecio) {
         this.tipo = pTipo;
         this.descripcion = pDescripcion;
         this.id = pId;
-        this.categoria = pCat;
+        this.precio = pPrecio;
     }
     //metodos
     public int getTipo() {
@@ -19,9 +20,6 @@ public abstract class Movimiento {
 
     public int getId() {
         return this.id;
-    }
-    public boolean getCat() {
-        return this.categoria;
     }
     public String getDescripcion() {
         return this.descripcion;
