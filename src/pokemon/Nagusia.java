@@ -160,7 +160,7 @@ public class Nagusia {
 	System.out.println("Jokoa hasi baino aurretik:");
 	
 	System.out.println();
-
+//prueba funcional
 		
 		
 		
