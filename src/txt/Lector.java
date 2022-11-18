@@ -87,7 +87,7 @@ public class Lector {
             int potencia;
             float booster;
             String estadistica;
-            String propio
+            String propio;
             boolean propioBool;
             while(sc.hasNext()){
                 String linea=sc.nextLine();
@@ -112,7 +112,7 @@ public class Lector {
                     tipo = Integer.parseInt(listadeLinea[0]);
                     descripcion = listadeLinea[1];
                     id = Integer.parseInt(listadeLinea[2]);
-                    cat = listadeLinea[3]);
+                    cat = listadeLinea[3];
                     if (cat=="true"){
                         catBool=true;
                     }

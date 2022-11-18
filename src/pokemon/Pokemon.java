@@ -96,13 +96,13 @@ public class Pokemon {
 			res = "fantasma";
 		}
 		if (pNum==5){
-			res = "hielo"
+			res = "hielo";
 		}
 		if (pNum==6){
-			res = "lucha"
+			res = "lucha";
 		}
 		if (pNum==7){
-			res = "tierra"
+			res = "tierra";
 		}
 		return res;
 	}
@@ -170,6 +170,12 @@ public class Pokemon {
 	public float getDefensa() {
 		return this.defensa;
 	}
+	public float getAtaquesp() {
+		return this.ataqueSp;
+	}
+	public float getDefensasp() {
+		return this.defensaSp;
+	}
 	public int getTipo() {
 		return this.tipo;
 	}
@@ -202,7 +208,7 @@ public class Pokemon {
 			Movimiento movim = null;
 			boolean primerMoviAtaque = false;//aseguramos minimo un movimientoataque
 			while(i<=4) {
-				int numRandom = (int) (Math.random()*ColeccionMovi.getMiListaMovi().listaLongi();
+				int numRandom = (int) (Math.random()*ColeccionMovi.getMiListaMovi().listaLongi());
 				while(loop <= 3 && !hay) {
 					if(listaNum[loop]==numRandom) {
 						hay = true;

@@ -35,7 +35,7 @@ public abstract class Entrenador {
         while(i<=numPoke) {
             int numAleatorio = (int) (Math.random()*Pokedex.getMiPokedex().listaLongitud());
             while (loop <= 3 && !esta) {
-                if(numAleatorio[loop]== numAleatorio) {
+                if(numLista[loop]== numAleatorio) {
                     esta = true;
                 }
                 loop = loop + 1;
@@ -43,7 +43,7 @@ public abstract class Entrenador {
             if(!esta) {
                 numLista[i] = numAleatorio;
                 Pokemon mom = Pokedex.getMiPokedex().crearPokemon(numAleatorio);
-                Pokemon copia = new Pokemon(mom.getNombre(),mom.getId(), mom.getVida(), mom.getAtaque(), mom.getVeloc(), mom.getDefensa(), mom.getTipo());
+                Pokemon copia = new Pokemon(mom.getNombre(),mom.getId(), mom.getVida(), mom.getAtaque(), mom.getVeloc(), mom.getDefensa(), mom.getTipo(), mom.getAtaquesp(), mom.getDefensasp());
                 copia.setVidaMax(mom.getVida());
                 copia.setListaMovi(mom.getMiLista());
                 listaPokemon.addPokemon(copia);
