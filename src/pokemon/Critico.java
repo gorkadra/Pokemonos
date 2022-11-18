@@ -15,5 +15,6 @@ public class Critico {
 	public int ataqueCritico(){
 		
 		return aux.nextInt(5)+1; //+1 egin dugu, gutxienez lvl->1 izateko//
+
 	}
 }
