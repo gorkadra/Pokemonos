@@ -6,8 +6,8 @@ public class MovimientoAtaque extends Movimiento {
     private boolean categoria; //fisico (T) o especial(F)
 
     //constructor
-    public MovimientoAtaque(int pTipo, String pDescripcion, int pId,boolean pCat, int pPotencia) {
-        super(pTipo,pDescripcion,pId);
+    public MovimientoAtaque(int pTipo, String pDescripcion, int pId, int pPrecio,boolean pCat, int pPotencia) {
+        super(pTipo,pDescripcion,pId, pPrecio);
         this.potencia = pPotencia;
         this.categoria = pCat;
     }

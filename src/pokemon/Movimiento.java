@@ -4,12 +4,14 @@ public abstract class Movimiento {
     private int tipo;
     private String descripcion;
     private int id;
+    private int precio;
 
     //constructor
-    public Movimiento(int pTipo, String pDescripcion, int pId) {
+    public Movimiento(int pTipo, String pDescripcion, int pId, int pPrecio) {
         this.tipo = pTipo;
         this.descripcion = pDescripcion;
         this.id = pId;
+        this.precio = pPrecio;
     }
     //metodos
     public int getTipo() {

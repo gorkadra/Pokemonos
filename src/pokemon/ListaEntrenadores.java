@@ -131,7 +131,7 @@ public class ListaEntrenadores {
                         }
                     }
                 }
-                cls();
+
             }
             if((ronda==5|| ronda==10||ronda==15)&& vaBien) {
                 if(personaje.getDinero()>=15) {
@@ -139,7 +139,7 @@ public class ListaEntrenadores {
                     System.out.println("si -> b");
                     String decision = Teclado.getMiTeclado().leerString();
                     if(decision.equals("b")){
-                        Movimiento pMovi = Tienda.getMiTienda().comprarMovimiento(); //hay que crear tienda
+                        Movimiento pMovi = Tienda.getMiTienda().comprarMov(); //hay que crear tienda
                         if(pMovi != null) {
                             miPoke.imprimirMovi();
                             System.out.println("que movimiento quieres comprar?");
@@ -202,7 +202,7 @@ public class ListaEntrenadores {
         }
         else if(haUsado instanceof MovimientoAtaque) {
             float ataque = ((MovimientoAtaque) haUsado).getPotencia();
-            int tipoAtaque = ((MovimientoAtaque) haUsado).getTipo()[0];
+            int tipoAtaque = ((MovimientoAtaque) haUsado).getTipo();
             float eficiencia = TablaTipos.getMiTablaTipos().calcularEfectividad(p1.getTipo()[0], p2.getTipo()[0]);
             float mismoTipo =(float) 1.0;
             if (((MovimientoAtaque) haUsado).getCat() == true){

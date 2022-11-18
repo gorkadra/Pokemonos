@@ -6,8 +6,8 @@ public class MovimientoStat extends Movimiento {
     private String estadistica;
     private boolean propio;
     //constructor
-    public MovimientoStat(int pTipo, String pDescripcion, int pId,float pBooster, String pEstadistica,boolean pPropio) {
-        super(pTipo,pDescripcion,pId);
+    public MovimientoStat(int pTipo, String pDescripcion, int pId, int pPrecio,float pBooster, String pEstadistica,boolean pPropio) {
+        super(pTipo,pDescripcion,pId, pPrecio);
         this.booster = pBooster;
         this.estadistica = pEstadistica;
         this.propio = pPropio;

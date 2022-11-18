@@ -1,3 +1,4 @@
+//tipo-desc-id-precio-especial-potencia
 2,Pistola Agua (Agua),1,False,40
 2,Surf (Agua),2,False,90
 2,Rayo Burbuja (Agua),3,False,65
@@ -33,6 +34,7 @@
 5,Psikokarga (fantasma),33,15,80
 5,Bonba Azidoa (fantasma),34,15,40
 5,Buztan Pozoitsua (fantasma),35,15,70
+//tipo-desc-id-precio-booster-estadistica-propio
 2,Refugio (sube defensa),36,15,1.15,Defentsa,true
 2,Acua Aro (recupera PS),37,15,1.1,BizitzaPuntuak,true
 2,Danza Lluvia (los ataques de agua reciben boost),38,15,1.08,Atake,true

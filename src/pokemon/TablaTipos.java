@@ -6,7 +6,7 @@ public class TablaTipos {
     private float[][] tablaTipo;
     //eraikitzailea
     private TablaTipos() {
-        tablaTipo = new float[5][5];
+        tablaTipo = new float[8][8];
     }
     public static TablaTipos getMiTablaTipos() {
         if(miTablaTipos == null) {
