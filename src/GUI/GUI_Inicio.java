@@ -9,6 +9,40 @@ import java.awt.event.ActionListener;
 public class GUI_Inicio implements ActionListener {
 
     public static void main(String[] args){
+        JFrame start = new JFrame();
+        start.setSize(500,300);
+        start.setLayout(new GridLayout(3,1));
+
+        JPanel bienvenido = new JPanel();
+        bienvenido.setLayout(new FlowLayout());
+        bienvenido.add(new JLabel("Hola, bienvenidx a Pokemonos!!"));
+
+        JPanel username = new JPanel();
+        username.setLayout(new GridLayout(3,3));
+        JLabel nom = new JLabel("Usuario: ");
+        username.add(nom,0,0);
+        JTextField txtNom = new JTextField();
+        username.add(txtNom,0,1);
+
+        JPanel botones = new JPanel();
+        botones.setLayout(new FlowLayout());
+        JButton reglas = new JButton("Reglas");
+        reglas.addActionListener(new GUI_Inicio());
+        JButton jugar = new JButton("Jugar");
+        jugar.addActionListener(new GUI_Inicio());
+        JButton salir = new JButton("Salir");
+        salir.addActionListener(new GUI_Inicio());
+        botones.add(reglas);
+        botones.add(jugar);
+        botones.add(salir);
+
+        start.add(bienvenido);
+        start.add(username);
+        start.add(botones);
+        start.setVisible(true);
+
+        // ------------------ OTRA PANTALLA -----------------
+
         JFrame frame = new JFrame();
 
         frame.setSize(1100,700);
@@ -91,6 +125,14 @@ public class GUI_Inicio implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
+        if (e.getActionCommand().equals("Reglas")){
+            System.out.println("1"); //Printear reglas
+        } else if (e.getActionCommand().equals("Jugar")) {
+            System.out.println("2"); //Checkear nombre
+            // If textBox llena -> sigue // Sino pedir nombre de nuevo
+        } else {
+            System.out.println("3"); //Salir
+            System.exit(0);
+        }
     }
 }
