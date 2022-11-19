@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class GUI_Inicio implements ActionListener {
 
     public static void main(String[] args){
-        JFrame start = new JFrame();
+        /*JFrame start = new JFrame();
         start.setSize(500,300);
         start.setLayout(new GridLayout(3,1));
 
@@ -39,7 +39,9 @@ public class GUI_Inicio implements ActionListener {
         start.add(bienvenido);
         start.add(username);
         start.add(botones);
-        start.setVisible(true);
+        start.setVisible(true);*/
+
+        Loggin log = new Loggin();
 
         // ------------------ OTRA PANTALLA -----------------
 

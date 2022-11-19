@@ -1,6 +1,9 @@
 package modelo.pokemon;
 
-public abstract class Entrenador {
+import java.util.Observable;
+import java.util.Observer;
+
+public abstract class Entrenador extends Observable {
     //atributos
     private ListaPokemon listaPokemon;
     private String nombre;
@@ -8,6 +11,10 @@ public abstract class Entrenador {
     //constructor
     public Entrenador(String pNombre,int pDinero) {
         this.nombre = pNombre;
+        this.dinero = pDinero;
+        this.listaPokemon = new ListaPokemon();
+    }
+    public Entrenador(int pDinero) {
         this.dinero = pDinero;
         this.listaPokemon = new ListaPokemon();
     }
@@ -24,7 +31,7 @@ public abstract class Entrenador {
     public void setDinero(int pDinero) {
         this.dinero=this.dinero+pDinero;
     }
-    protected void setNombre(String pNombre){
+    public void setNombre(String pNombre){
         this.nombre=pNombre;
     }
     public void crearEquipo(int numPoke) {
@@ -62,4 +69,10 @@ public abstract class Entrenador {
         }
     }
     public abstract Movimiento usarMovi(Pokemon pPoke);
+
+    @Override
+    public synchronized void addObserver(Observer o) {
+        // TODO Auto-generated method stub
+        super.addObserver(o);
+    }
 }

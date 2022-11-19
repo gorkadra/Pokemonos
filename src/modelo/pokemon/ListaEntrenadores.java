@@ -243,7 +243,7 @@ public class ListaEntrenadores {
     private void crearPersonaje() { // para crear el equipo del personaje
         int cuantosPokemon = 3;
         if(personaje == null) {
-            personaje =  new EntrenadorPropio(" ",10);
+            personaje =  EntrenadorPropio.getEntrenadorPropio();
             personaje.crearEquipo(cuantosPokemon);
         }
     }

@@ -1,11 +1,20 @@
 package modelo.pokemon;
 
-public class EntrenadorPropio extends Entrenador{
-    //atributos
+import java.util.Observable;
+import java.util.Observer;
 
+public class EntrenadorPropio extends Entrenador {
+    //atributos
+    private static EntrenadorPropio yo;
     //constructor
-    public EntrenadorPropio(String pNombre, int pDinero) {
-        super(pNombre, pDinero);
+    private EntrenadorPropio() {
+        super(10);
+    }
+    public static EntrenadorPropio getEntrenadorPropio(){
+        if(yo==null){
+            yo=new EntrenadorPropio();
+        }
+        return yo;
     }
     //metodos
     @Override
@@ -13,5 +22,11 @@ public class EntrenadorPropio extends Entrenador{
         Integer num = Teclado.getMiTeclado().leerEntero();
         Movimiento usar = pPoke.usarMovi(num);
         return usar;
+    }
+
+    @Override
+    public synchronized void addObserver(Observer o) {
+        // TODO Auto-generated method stub
+        super.addObserver(o);
     }
 }
