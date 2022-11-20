@@ -22,21 +22,22 @@ public class LogginControl implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(log.getReglas().equals(e.getSource())){
-            JOptionPane.showMessageDialog(null, "La única regla es divertirse rey :D");
+            String reglas = "                                      --- REGLAS ---\n" +
+                    "1. Al pulsar jugar, se te asginarán 4 pokemon aleatoriamente\n" +
+                    "2. En cada turno podrás elegir uno de tus 4 movimientos disponibles\n" +
+                    "3. Después de ti el enemigo hará lo mismo en tu contra\n" +
+                    "4. El combate acabará cuando uno de los dos se quede sin Pokemon";
+            JOptionPane.showMessageDialog(null, reglas);
 
         }else if(log.getJugar().equals(e.getSource())){
-            System.out.println("pilla el boton jugar");
-            System.out.println(log.getTxtNom().getText());
             if(log.getTxtNom().getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Te has olvidado de decir quien eres");
+                JOptionPane.showMessageDialog(null, "Indica tu nombre porfavor :)");
                 log.getTxtNom().setText("");
                 log.getTxtNom().requestFocus();
             }else{
                 entrenador.setNombre(log.getTxtNom().getText());
             }
         }else if(log.getSalir().equals(e.getSource())){
-            System.out.println("pilla el boton salir");
-            //Hacer que se cierre la ventana
             System.exit(0);
         }
 

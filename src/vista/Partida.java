@@ -32,26 +32,27 @@ public class Partida implements Observer {
         JPanel relleno2 = new JPanel();
         JPanel relleno3 = new JPanel();
 
-        /*
-        JPanel vidaIA = new JPanel();
-        vidaIA.setLayout(new GridBagLayout());
-         */
-
+        //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
         pokemonIA = new PanelFoto("src/vista/PkmImg/Abomasnow.jpeg");
 
+        //Mirar que boton se ha pulsado, calcular la efectividad contra el pokemon enemigo y decir el pokemon enemigo
+        //Boton pulsado + Calcular efectividad vs pokemon enemigo + nombre pokemon enemigo
         float mult = 1.0F;
         PanelChat chat = new PanelChat("Lanzallamas",mult,"Kyogre");
 
+        //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
         pokemonJgd = new PanelFoto("src/vista/PkmImg/Abomasnow.jpeg");
 
         // ---------------------------------------------------------
         JPanel movs = new JPanel();
         movs.setLayout(new GridLayout(2,2));
+        // Cargar lista de movimientos de nuestro pokemon actual
         String[] movis = new String[4];
         movis[0] = "Lanzallamas";
         movis[1] = "Nitrocarga";
         movis[2] = "Avalancha";
         movis[3] = "Tajo aereo";
+        // Lista de los tipos de esos movimientos
         String[] tiposMvs = new String[4];
         tiposMvs[0] = "Fuego";
         tiposMvs[1] = "Fuego";
@@ -71,16 +72,15 @@ public class Partida implements Observer {
         movs.add(bt2);
         movs.add(bt3);
         movs.add(bt4);
+
         //-----------------------------------------------------------
 
-        /*
-        JPanel vidaJgd = new JPanel();
-        vidaJgd.setLayout(new GridBagLayout());
-        */
-        String nomPkmJ = "Paco";
-        String[] tiposPkmJ = new String[2];
+
+        String nomPkmJ = "Paco"; // Nombre del pokemon actual
+        String[] tiposPkmJ = new String[2]; // Tipo(s) del pokemon en cuestion
         tiposPkmJ[0] = "Agua";
         tiposPkmJ[1] = "Tierra";
+        // Vida actual y vida total del pokemon
         int ptVidaJ = 51;
         int vidTotJ = 100;
 
@@ -205,9 +205,29 @@ public class Partida implements Observer {
         }
         if(arg.equals(Notificaciones.pierdePropio)){
             //pantalla de que has perdido
+            JFrame lose = new JFrame();
+            lose.setSize(350,150);
+            lose.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            lose.setLayout(new BorderLayout());
+            JPanel lost = new JPanel();
+            lost.setLayout(new BorderLayout());
+            JLabel mensaje = new JLabel("Has perdido la partida :(");
+            lost.add(mensaje,BorderLayout.CENTER);
+            lose.add(lost,BorderLayout.CENTER);
+            lose.setVisible(true);
         }
         if(arg.equals(Notificaciones.pierdeRival)){
             //pantalla de que ha perdido el rival
+            JFrame win = new JFrame();
+            win.setSize(350,150);
+            win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            win.setLayout(new BorderLayout());
+            JPanel won = new JPanel();
+            won.setLayout(new BorderLayout());
+            JLabel mensaje = new JLabel("Has ganado la partida!! :)");
+            won.add(mensaje,BorderLayout.CENTER);
+            win.add(won,BorderLayout.CENTER);
+            win.setVisible(true);
         }
     }
 }
