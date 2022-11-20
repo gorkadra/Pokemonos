@@ -23,6 +23,12 @@ public class EntrenadorPropio extends Entrenador {
         Movimiento usar = pPoke.usarMovi(num);
         return usar;
     }
+    @Override
+    public void setNombre(String pNombre){
+        super.setNombre(pNombre);
+        setChanged();
+        notifyObservers(Notificaciones.empezar);
+    }
 
     @Override
     public synchronized void addObserver(Observer o) {

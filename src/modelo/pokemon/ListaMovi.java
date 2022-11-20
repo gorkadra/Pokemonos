@@ -50,6 +50,7 @@ public class ListaMovi {
     public void imprimirMovi() {
         for (int i = 0;i<listaMovi.size();i++) {
             System.out.println(this.listaMovi.get(i).getDescripcion());
+
         }
     }
     public void reset() {

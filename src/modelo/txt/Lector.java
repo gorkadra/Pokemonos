@@ -127,6 +127,7 @@ public class Lector {
                     potencia = Integer.parseInt(listadeLinea[5]);
                     MovimientoAtaque movAtac = new MovimientoAtaque(tipo,descripcion,id,precio,catBool,potencia);
                     ColeccionMovi.getMiListaMovi().getMiLista().addMovi(movAtac);
+                    System.out.println(ColeccionMovi.getMiListaMovi().getMiLista().buscarPorId(id).getDescripcion());
                 }
                 else if(listadeLinea.length==7){
                     tipo = Integer.parseInt(listadeLinea[0]);
@@ -144,9 +145,10 @@ public class Lector {
                     }
                     MovimientoStat movStat = new MovimientoStat(tipo,descripcion,id,precio,booster,estadistica,propioBool);
                     ColeccionMovi.getMiListaMovi().getMiLista().addMovi(movStat);
+                    System.out.println(ColeccionMovi.getMiListaMovi().getMiLista().buscarPorId(id).getDescripcion());
                 }
                 else{
-                    sc.nextLine();
+                    System.out.println("No es un movimiento");
                 }
             }
         }catch (FileNotFoundException e) {

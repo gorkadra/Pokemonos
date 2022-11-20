@@ -255,7 +255,7 @@ public class Pokemon {
 		return res;
 	}
 
-	public void asignarMovim() {
+	/*public void asignarMovim() {
 		if(this.getMiLista().listaLongi()==0) { //para que no le ponga mas de 4 ataques a cada model.pokemon
 			int[] listaNum = new int[4];
 			boolean hay = false;
@@ -319,7 +319,52 @@ public class Pokemon {
 				loop = 0;
 			}
 		}
+	}*/
+
+	public void asignarMovim(){
+		if(this.getMiLista().listaLongi()==0) { //para que no le ponga mas de 4 ataques a cada model.pokemon
+			int[] listaNum = new int[4];
+			boolean hay = false;
+			int i = 0;
+			int loop = 0;
+			Movimiento movim = null;
+			boolean primerMoviAtaque = false;//aseguramos minimo un movimientoataque
+			while(i<=3) {
+				int numRandom = (int) (Math.random()*ColeccionMovi.getMiListaMovi().listaLongi());
+				//comprobamos si el movimiento está ya metido
+				while(loop <= 3 && !hay) {
+					if(listaNum[loop]==numRandom) {
+						hay = true;
+					}
+					loop = loop + 1;
+				}
+				//Si no está metido lo metemos
+				if(!hay) {
+					movim = ColeccionMovi.getMiListaMovi().aplicarMovi(numRandom);
+
+					//aleatorioki erabakitako mugimendua bariable batean gordetzeko
+					if(!primerMoviAtaque) {//gutxienez eraso bat eraso mugimenduarena izateko
+						if(movim instanceof MovimientoAtaque && this.getTipo()[0]==movim.getTipo()) {
+							this.listaMovi.addMovi(movim);
+						}
+						primerMoviAtaque = true;
+						i = i + 1;
+						listaNum[i-1]=numRandom;
+					}
+					else {
+						this.listaMovi.addMovi(movim);
+						i = i + 1;
+						listaNum[i-1]=numRandom;
+					}
+
+				}
+				//Preparamos la siguiente vuelta
+				hay = false;
+				loop = 0;
+			}
+		}
 	}
+
 	public boolean mismoId(int pId) {
 		boolean res = false;
 		if(this.getId() == pId) {

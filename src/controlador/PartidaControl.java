@@ -1,13 +1,18 @@
 package controlador;
 
+import modelo.pokemon.Entrenador;
 import modelo.pokemon.ListaEntrenadores;
+import modelo.pokemon.Notificaciones;
 import vista.Partida;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
-public class PartidaControl implements ActionListener {
+public class PartidaControl implements ActionListener, Observer {
 
     private Partida juego;
     private ListaEntrenadores lisEnt;
@@ -19,25 +24,37 @@ public class PartidaControl implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
-        if(juego.){
-            JOptionPane.showMessageDialog(null, "La única regla es divertirse rey :D");
+        if(juego.getBt1().equals(e.getSource())){
+            System.out.println("Ataque 1");
+        }else if(juego.getBt2().equals(e.getSource())){
+            System.out.println("Ataque 2");
 
-        }else if(juego.){
-            System.out.println("pilla el boton jugar");
-            //System.out.println(log.getTxtNom().getText());
-            if(juego.){
-                JOptionPane.showMessageDialog(null, "Te has olvidado de decir quien eres");
+        }else if(juego.getBt3().equals(e.getSource())){
+            System.out.println("Ataque 3");
 
-            }else{
-                //lisEnt.
-            }
-        }else if(juego.){
-            System.out.println("pilla el boton salir");
-            //Hacer que se cierre la ventana
-            System.exit(0);
+        }else if(juego.getBt4().equals(e.getSource())){
+            System.out.println("Ataque 4");
+
         }
 
 
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        if(arg.equals(Notificaciones.pokemonCambiado)){
+            juego.setPokemonIA(lisEnt.getLista().get(0).getMiListaPokemon().getMiLista().get(1).getNombre());
+            juego.setPokemonJgd(lisEnt.getLista().get(0).getMiListaPokemon().getMiLista().get(0).getNombre());
+
+        }
+        if(arg.equals(Notificaciones.turnoHecho)){
+            //pantalla de que has perdido
+        }
+        if(arg.equals(Notificaciones.pierdePropio)){
+            //pantalla de que has perdido
+        }
+        if(arg.equals(Notificaciones.pierdeRival)){
+            //pantalla de que ha perdido el rival
+        }
+    }
 }

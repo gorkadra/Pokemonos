@@ -1,9 +1,6 @@
 package modelo.pokemon;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Observable;
+import java.util.*;
 
 
 public class ListaEntrenadores extends Observable {
@@ -13,7 +10,8 @@ public class ListaEntrenadores extends Observable {
     private ArrayList<Entrenador> lista;
     // constructor
     private void ListaEntrenadores() {
-        this.lista = new ArrayList<Entrenador>();
+
+        lista = new ArrayList<Entrenador>();
     }
     public static ListaEntrenadores getMiListaEntrenadores() {
         if(listaEntrenadores == null) {
@@ -27,11 +25,13 @@ public class ListaEntrenadores extends Observable {
     }
     public void setPersonaje(EntrenadorPropio pPerson) {
         this.personaje = pPerson;
+        lista = new ArrayList<Entrenador>();
+        lista.add(personaje);
     }
     public void resetear() {
         this.lista.clear();
     }
-    private void pelear() {
+    public void pelear() {
         boolean primeraVez = true;//para que no cambie nuestro model.pokemon todo el rato
         Iterator<Entrenador> itrEntrenador = this.getIterador();
         boolean vaBien = true;//para saber si se han debilitado los model.pokemon
@@ -129,7 +129,7 @@ public class ListaEntrenadores extends Observable {
                         }
                     }
                 }
-                notifyObservers(Notifi.Sudokua_ondo);
+                //notifyObservers(Notifi.Sudokua_ondo);
 
             }
             if((ronda==5|| ronda==10||ronda==15)&& vaBien) {
@@ -225,7 +225,7 @@ public class ListaEntrenadores extends Observable {
 
         }
     }
-    private void crearEntrenador() {
+    public void crearEntrenador() {
         int cuantosPokemon  = 0;
         String pNombre = "PAKO";
         int pDinero = 5; //con la tienda
@@ -250,8 +250,12 @@ public class ListaEntrenadores extends Observable {
         }
     }
 
-    private Iterator<Entrenador> getIterador() {
+    public Iterator<Entrenador> getIterador() {
         return this.lista.iterator();
     }
 
+    @Override
+    public synchronized void addObserver(Observer o) {
+        super.addObserver(o);
+    }
 }

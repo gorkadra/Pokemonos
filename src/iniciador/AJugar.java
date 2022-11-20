@@ -1,8 +1,10 @@
 package iniciador;
 
+import controlador.PartidaControl;
 import modelo.pokemon.EntrenadorPropio;
 import modelo.pokemon.ListaEntrenadores;
 import modelo.txt.Lector;
+import vista.Partida;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -31,11 +33,25 @@ public class AJugar implements Observer {
         ListaEntrenadores lisEnt = ListaEntrenadores.getMiListaEntrenadores();
         EntrenadorPropio yo = EntrenadorPropio.getEntrenadorPropio();
         yo.crearEquipo(3);
+        System.out.println(yo.getNombre());
+        yo.getMiListaPokemon().imprimirPokemon();
+
         lisEnt.setPersonaje(yo);
+        lisEnt.crearEntrenador();
 
         //vista
+        Partida parti = new Partida();
 
         //controlador
+        PartidaControl parCon = new PartidaControl(parti,lisEnt);
+        parti.setController(parCon);
+
+        //Observers a la lista de entrenadores
+        lisEnt.addObserver(parCon);
+        lisEnt.addObserver(parti);
+
+
+
     }
 
     @Override

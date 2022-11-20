@@ -1,49 +1,25 @@
 package vista;
 
+import controlador.LogginControl;
+import controlador.PartidaControl;
+import modelo.pokemon.Notificaciones;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 
-public class Partida implements ActionListener {
+public class Partida implements Observer {
 
-    public static void main(String[] args){
-        /*JFrame start = new JFrame();
-        start.setSize(500,300);
-        start.setLayout(new GridLayout(3,1));
+    private JButton bt1,bt2,bt3,bt4;
+    private PanelFoto pokemonIA, pokemonJgd;
 
-        JPanel bienvenido = new JPanel();
-        bienvenido.setLayout(new FlowLayout());
-        bienvenido.add(new JLabel("Hola, bienvenidx a Pokemonos!!"));
+    public Partida() {
 
-        JPanel username = new JPanel();
-        username.setLayout(new GridLayout(3,3));
-        JLabel nom = new JLabel("Usuario: ");
-        username.add(nom,0,0);
-        JTextField txtNom = new JTextField();
-        username.add(txtNom,0,1);
-
-        JPanel botones = new JPanel();
-        botones.setLayout(new FlowLayout());
-        JButton reglas = new JButton("Reglas");
-        reglas.addActionListener(new GUI_Inicio());
-        JButton jugar = new JButton("Jugar");
-        jugar.addActionListener(new GUI_Inicio());
-        JButton salir = new JButton("Salir");
-        salir.addActionListener(new GUI_Inicio());
-        botones.add(reglas);
-        botones.add(jugar);
-        botones.add(salir);
-
-        start.add(bienvenido);
-        start.add(username);
-        start.add(botones);
-        start.setVisible(true);*/
-
-        Loggin log = new Loggin();
-
-        // ------------------ OTRA PANTALLA -----------------
+        // ------------------ Pantalla de partida -----------------
 
         JFrame frame = new JFrame();
 
@@ -60,12 +36,12 @@ public class Partida implements ActionListener {
         vidaIA.setLayout(new GridBagLayout());
          */
 
-        PanelFoto pokemonIA = new PanelFoto("C:/Users/olaba/Desktop/Bulbas.jpeg");
+        pokemonIA = new PanelFoto("src/vista/PkmImg/Abomasnow.jpeg");
 
         float mult = 1.0F;
         PanelChat chat = new PanelChat("Lanzallamas",mult,"Kyogre");
 
-        PanelFoto pokemonJgd = new PanelFoto("C:/Users/olaba/Desktop/Charm.jpeg");
+        pokemonJgd = new PanelFoto("src/vista/PkmImg/Abomasnow.jpeg");
 
         // ---------------------------------------------------------
         JPanel movs = new JPanel();
@@ -85,14 +61,10 @@ public class Partida implements ActionListener {
         String mov3 = movis[2] + " (" + tiposMvs[2] + ")";
         String mov4 = movis[3] + " (" + tiposMvs[3] + ")";
 
-        JButton bt1 = new JButton(mov1);
-        bt1.addActionListener(new Partida());
-        JButton bt2 = new JButton(mov2);
-        bt2.addActionListener(new Partida());
-        JButton bt3 = new JButton(mov3);
-        bt3.addActionListener(new Partida());
-        JButton bt4 = new JButton(mov4);
-        bt4.addActionListener(new Partida());
+        bt1 = new JButton(mov1);
+        bt2 = new JButton(mov2);
+        bt3 = new JButton(mov3);
+        bt4 = new JButton(mov4);
 
         movs.add(bt1);
         movs.add(bt2);
@@ -125,16 +97,56 @@ public class Partida implements ActionListener {
         frame.setVisible(true);
     }
 
+    public void setController(PartidaControl ptc){
+        bt1.addActionListener(ptc);
+        bt2.addActionListener(ptc);
+        bt3.addActionListener(ptc);
+        bt4.addActionListener(ptc);
+    }
+
+    public JButton getBt1() {
+        return bt1;
+    }
+
+    public JButton getBt2() {
+        return bt2;
+    }
+
+    public JButton getBt3() {
+        return bt3;
+    }
+
+    public JButton getBt4() {
+        return bt4;
+    }
+
+    public void setPokemonIA(String nombrePok) {
+        String path = "src/vista/PkmImg";
+        path.concat(nombrePok);
+        path.concat(".jpeg");
+        this.pokemonIA.imageIcon(path);
+    }
+
+    public void setPokemonJgd(String nombrePok) {
+        String path = "src/vista/PkmImg";
+        path.concat(nombrePok);
+        path.concat(".jpeg");
+        this.pokemonJgd.imageIcon(path);
+    }
+
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Reglas")){
-            System.out.println("1"); //Printear reglas
-        } else if (e.getActionCommand().equals("Jugar")) {
-            System.out.println("2"); //Checkear nombre
-            // If textBox llena -> sigue // Sino pedir nombre de nuevo
-        } else {
-            System.out.println("3"); //Salir
-            System.exit(0);
+    public void update(Observable o, Object arg) {
+        if(arg.equals(Notificaciones.pokemonCambiado)){
+            //se ha cambiado el pokemon
+        }
+        if(arg.equals(Notificaciones.turnoHecho)){
+            //pantalla de que has perdido
+        }
+        if(arg.equals(Notificaciones.pierdePropio)){
+            //pantalla de que has perdido
+        }
+        if(arg.equals(Notificaciones.pierdeRival)){
+            //pantalla de que ha perdido el rival
         }
     }
 }
