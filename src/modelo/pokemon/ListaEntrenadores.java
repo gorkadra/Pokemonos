@@ -238,8 +238,11 @@ public class ListaEntrenadores extends Observable {
             }
             EntrenadorBot actual = new EntrenadorBot(pNombre,pDinero);
             actual.crearEquipo(cuantosPokemon);
+            System.out.println(actual.getNombre());
+            actual.getMiListaPokemon().imprimirPokemon();
             lista.add(actual);
         }
+
     }
 
     private void crearPersonaje() { // para crear el equipo del personaje
