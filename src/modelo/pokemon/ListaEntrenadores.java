@@ -241,7 +241,6 @@ public class ListaEntrenadores extends Observable {
             System.out.println(actual.getNombre());
             actual.getMiListaPokemon().imprimirPokemon();
             lista.add(actual);
-
         }
 
     }
