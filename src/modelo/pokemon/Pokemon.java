@@ -245,6 +245,7 @@ public class Pokemon {
 		boolean enc = false;
 		Iterator<Movimiento> itr = this.listaMovi.getIterador();
 		while(i <= 4 && !enc){
+			System.out.println(i + "" + num);
 			Movimiento movi = itr.next();
 			if(i==num) {
 				enc = true;

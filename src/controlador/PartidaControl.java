@@ -25,15 +25,16 @@ public class PartidaControl implements ActionListener, Observer {
     public void actionPerformed(ActionEvent e) {
 
         if(juego.getBt1().equals(e.getSource())){
-            System.out.println("Ataque 1");
+            lisEnt.pelearConNum(1);
+            juego.cambiado();
         }else if(juego.getBt2().equals(e.getSource())){
-            System.out.println("Ataque 2");
+            lisEnt.pelearConNum(2);
 
         }else if(juego.getBt3().equals(e.getSource())){
-            System.out.println("Ataque 3");
+            lisEnt.pelearConNum(3);
 
         }else if(juego.getBt4().equals(e.getSource())){
-            System.out.println("Ataque 4");
+            lisEnt.pelearConNum(4);
 
         }
 

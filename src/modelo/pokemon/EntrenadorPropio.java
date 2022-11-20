@@ -17,9 +17,7 @@ public class EntrenadorPropio extends Entrenador {
         return yo;
     }
     //metodos
-    @Override
-    public Movimiento usarMovi(Pokemon pPoke) {
-        Integer num = Teclado.getMiTeclado().leerEntero();
+    public Movimiento usarMoviNum(Pokemon pPoke, int num) {
         Movimiento usar = pPoke.usarMovi(num);
         return usar;
     }
@@ -28,6 +26,11 @@ public class EntrenadorPropio extends Entrenador {
         super.setNombre(pNombre);
         setChanged();
         notifyObservers(Notificaciones.empezar);
+    }
+
+    @Override
+    public Movimiento usarMovi(Pokemon pPoke) {
+        return null;
     }
 
     @Override
