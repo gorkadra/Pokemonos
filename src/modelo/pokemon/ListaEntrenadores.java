@@ -3,9 +3,10 @@ package modelo.pokemon;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Observable;
 
 
-public class ListaEntrenadores {
+public class ListaEntrenadores extends Observable {
     //atributos
     private static ListaEntrenadores listaEntrenadores = null;
     private EntrenadorPropio personaje = null;
@@ -128,6 +129,7 @@ public class ListaEntrenadores {
                         }
                     }
                 }
+                notifyObservers(Notifi.Sudokua_ondo);
 
             }
             if((ronda==5|| ronda==10||ronda==15)&& vaBien) {
@@ -223,12 +225,12 @@ public class ListaEntrenadores {
 
         }
     }
-    private void crearEntrenadores() {
+    private void crearEntrenador() {
         int cuantosPokemon  = 0;
         String pNombre = "PAKO";
         int pDinero = 5; //con la tienda
         for(int i=1;i<=20;i++) {
-            if(i%5 == 0) { //de las rondas 5-10-15-20 rondetako entrenatzaileei 3 model.pokemon esleitzeko
+            if(i%5 == 0) { //de las rondas 5-10-15-20 los entrenadores tendrán 3 pokemon
                 cuantosPokemon = 3;
             }
             else {

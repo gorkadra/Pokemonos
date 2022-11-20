@@ -10,11 +10,7 @@ import java.util.Scanner;
 public class Nagusia {
 	public static void main (String[] args){
 
-		//Cargar los datos del juego
-		Lector miLector = new Lector();
-		miLector.leerTipos();
-		miLector.leerPokemons();
-		miLector.leerAtaques();
+
 
 		//Vista
 		Loggin log = new Loggin();

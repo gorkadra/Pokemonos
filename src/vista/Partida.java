@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class GUI_Inicio implements ActionListener {
+public class Partida implements ActionListener {
 
     public static void main(String[] args){
         /*JFrame start = new JFrame();
@@ -86,13 +86,13 @@ public class GUI_Inicio implements ActionListener {
         String mov4 = movis[3] + " (" + tiposMvs[3] + ")";
 
         JButton bt1 = new JButton(mov1);
-        bt1.addActionListener(new GUI_Inicio());
+        bt1.addActionListener(new Partida());
         JButton bt2 = new JButton(mov2);
-        bt2.addActionListener(new GUI_Inicio());
+        bt2.addActionListener(new Partida());
         JButton bt3 = new JButton(mov3);
-        bt3.addActionListener(new GUI_Inicio());
+        bt3.addActionListener(new Partida());
         JButton bt4 = new JButton(mov4);
-        bt4.addActionListener(new GUI_Inicio());
+        bt4.addActionListener(new Partida());
 
         movs.add(bt1);
         movs.add(bt2);
