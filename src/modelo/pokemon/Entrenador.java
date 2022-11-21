@@ -7,7 +7,7 @@ public abstract class Entrenador extends Observable {
     //atributos
     private ListaPokemon listaPokemon;
     private String nombre;
-    private int dinero;
+    private int dinero, pokRes;
     //constructor
     public Entrenador(String pNombre,int pDinero) {
         this.nombre = pNombre;
@@ -35,6 +35,7 @@ public abstract class Entrenador extends Observable {
         this.nombre=pNombre;
     }
     public void crearEquipo(int numPoke) {
+        pokRes = numPoke;
         int[] numLista = new int[4];
         int loop = 0;
         boolean esta = false;
@@ -74,5 +75,13 @@ public abstract class Entrenador extends Observable {
     public synchronized void addObserver(Observer o) {
         // TODO Auto-generated method stub
         super.addObserver(o);
+    }
+
+    public int getPokRes() {
+        return pokRes;
+    }
+
+    public void setPokRes(int pokRes) {
+        this.pokRes = pokRes;
     }
 }

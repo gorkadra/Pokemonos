@@ -29,12 +29,15 @@ public class PartidaControl implements ActionListener, Observer {
             juego.cambiado();
         }else if(juego.getBt2().equals(e.getSource())){
             lisEnt.pelearConNum(2);
+            juego.cambiado();
 
         }else if(juego.getBt3().equals(e.getSource())){
             lisEnt.pelearConNum(3);
+            juego.cambiado();
 
         }else if(juego.getBt4().equals(e.getSource())){
             lisEnt.pelearConNum(4);
+            juego.cambiado();
 
         }
 
@@ -44,8 +47,8 @@ public class PartidaControl implements ActionListener, Observer {
     @Override
     public void update(Observable o, Object arg) {
         if(arg.equals(Notificaciones.pokemonCambiado)){
-            juego.setPokemonIA(lisEnt.getLista().get(0).getMiListaPokemon().getMiLista().get(1).getNombre());
-            juego.setPokemonJgd(lisEnt.getLista().get(0).getMiListaPokemon().getMiLista().get(0).getNombre());
+            juego.setPokemonIA(lisEnt.getRival().getMiListaPokemon().getMiLista().get(1).getNombre());
+            juego.setPokemonJgd(lisEnt.getPersonaje().getMiListaPokemon().getMiLista().get(0).getNombre());
 
         }
         if(arg.equals(Notificaciones.turnoHecho)){

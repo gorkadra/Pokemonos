@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -31,42 +32,38 @@ public class Partida implements Observer {
         JPanel relleno1 = new JPanel();
         JPanel relleno2 = new JPanel();
         JPanel relleno3 = new JPanel();
+        ListaEntrenadores lisEnt = ListaEntrenadores.getMiListaEntrenadores();
+        EntrenadorPropio yo = lisEnt.getPersonaje();
+        EntrenadorBot riv = lisEnt.getRival();
 
         //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
-        pokemonIA = new PanelFoto("src/vista/PkmImg/Abomasnow.jpeg");
+        String nombrePok = riv.getMiListaPokemon().getMiLista().get(0).getNombre();
+        String path = "src/vista/PkmImg/" +nombrePok+".jpeg";
+        System.out.println(path);
+        pokemonIA = new PanelFoto(path);
 
         //Mirar que boton se ha pulsado, calcular la efectividad contra el pokemon enemigo y decir el pokemon enemigo
         //Boton pulsado + Calcular efectividad vs pokemon enemigo + nombre pokemon enemigo
         float mult = 1.0F;
-        PanelChat chat = new PanelChat("Lanzallamas",mult,"Kyogre");
+        PanelChat chat = new PanelChat(yo.getMiListaPokemon().getMiLista().get(0).getMiLista().getMiLista().get(1).getDescripcion(),mult,nombrePok);
 
         //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
-        pokemonJgd = new PanelFoto("src/vista/PkmImg/Abomasnow.jpeg");
+        String nombrePokYo = yo.getMiListaPokemon().getMiLista().get(0).getNombre();
+        String pathYo = "src/vista/PkmImg/" +nombrePokYo+".jpeg";
+        pokemonJgd = new PanelFoto(pathYo);
 
         // ---------------------------------------------------------
         JPanel movs = new JPanel();
         movs.setLayout(new GridLayout(2,2));
         // Cargar lista de movimientos de nuestro pokemon actual
         String[] movis = new String[4];
-        movis[0] = "Lanzallamas";
-        movis[1] = "Nitrocarga";
-        movis[2] = "Avalancha";
-        movis[3] = "Tajo aereo";
-        // Lista de los tipos de esos movimientos
-        String[] tiposMvs = new String[4];
-        tiposMvs[0] = "Fuego";
-        tiposMvs[1] = "Fuego";
-        tiposMvs[2] = "Roca";
-        tiposMvs[3] = "Volador";
-        String mov1 = movis[0] + " (" + tiposMvs[0] + ")";
-        String mov2 = movis[1] + " (" + tiposMvs[1] + ")";
-        String mov3 = movis[2] + " (" + tiposMvs[2] + ")";
-        String mov4 = movis[3] + " (" + tiposMvs[3] + ")";
+        movis = yo.getMiListaPokemon().getMiLista().get(0).getMiLista().desMovStr();
 
-        bt1 = new JButton(mov1);
-        bt2 = new JButton(mov2);
-        bt3 = new JButton(mov3);
-        bt4 = new JButton(mov4);
+        bt1 = new JButton(movis[0]);
+        bt2 = new JButton(movis[1]);
+        bt3 = new JButton(movis[2]);
+        bt4 = new JButton(movis[3]);
+
 
         movs.add(bt1);
         movs.add(bt2);
@@ -76,15 +73,28 @@ public class Partida implements Observer {
         //-----------------------------------------------------------
 
 
-        String nomPkmJ = "Paco"; // Nombre del pokemon actual
-        String[] tiposPkmJ = new String[2]; // Tipo(s) del pokemon en cuestion
-        tiposPkmJ[0] = "Agua";
-        tiposPkmJ[1] = "Tierra";
-        // Vida actual y vida total del pokemon
-        int ptVidaJ = 51;
-        int vidTotJ = 100;
+        Pokemon pok = yo.getMiListaPokemon().getMiLista().get(3-yo.getPokRes());
+        String[] tiposPkmJ = new String[2];
+        int[] tipInt = pok.getTipo();
+        int tip1 = tipInt[0];
+        int tip2 = tipInt[1];
+        tiposPkmJ[0] = Integer.toString(tip1);
+        tiposPkmJ[1] = Integer.toString(tip2);
+        int ptVidaJ = (int)pok.getVida();
+        int vidTotJ = (int)pok.getVidaMax();
 
-        frame.add(new PanelVida(nomPkmJ,tiposPkmJ,ptVidaJ,vidTotJ));
+        Pokemon pokR = riv.getMiListaPokemon().getMiLista().get(3-riv.getPokRes());
+        String[] tiposPkmR = new String[2];
+        String nomPkmR = riv.getNombre();
+        int[] tipIntR = pokR.getTipo();
+        tip1 = tipIntR[0];
+        tip2 = tipIntR[1];
+        tiposPkmR[0] = Integer.toString(tip1);
+        tiposPkmR[1] = Integer.toString(tip2);
+        int ptVidaR = (int)pok.getVida();
+        int vidTotR = (int)pok.getVidaMax();
+
+        frame.add(new PanelVida(pokR.getNombre(),tiposPkmR,ptVidaR,vidTotR));
         frame.add(relleno1);
         frame.add(pokemonIA);
         frame.add(relleno2);
@@ -92,7 +102,7 @@ public class Partida implements Observer {
         frame.add(relleno3);
         frame.add(pokemonJgd);
         frame.add(movs);
-        frame.add(new PanelVida(nomPkmJ,tiposPkmJ,ptVidaJ,vidTotJ));
+        frame.add(new PanelVida(pok.getNombre(),tiposPkmJ,ptVidaJ,vidTotJ));
 
 
         frame.setVisible(true);
@@ -136,12 +146,56 @@ public class Partida implements Observer {
     }
 
     public void cambiado(){
-        JOptionPane.showMessageDialog(null, "pako");
-        ListaEntrenadores lisEnt= ListaEntrenadores.getMiListaEntrenadores();
-        EntrenadorPropio yo = (EntrenadorPropio)lisEnt.getLista().get(0);
-        String nomPkmJ = yo.getNombre();
-        setPokemonJgd(nomPkmJ);
-        Pokemon pok = yo.getMiListaPokemon().getMiLista().get(0);
+        frame.dispose();
+        frame = new JFrame();
+        frame.setSize(1100,700);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout(3,3));
+
+        JPanel relleno1 = new JPanel();
+        JPanel relleno2 = new JPanel();
+        JPanel relleno3 = new JPanel();
+        ListaEntrenadores lisEnt = ListaEntrenadores.getMiListaEntrenadores();
+        EntrenadorPropio yo = lisEnt.getPersonaje();
+        EntrenadorBot riv = lisEnt.getRival();
+
+        //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
+        String nombrePok = riv.getMiListaPokemon().getMiLista().get(0).getNombre();
+        String path = "src/vista/PkmImg/" +nombrePok+".jpeg";
+        System.out.println(path);
+        pokemonIA = new PanelFoto(path);
+
+        //Mirar que boton se ha pulsado, calcular la efectividad contra el pokemon enemigo y decir el pokemon enemigo
+        //Boton pulsado + Calcular efectividad vs pokemon enemigo + nombre pokemon enemigo
+        float mult = 1.0F;
+        PanelChat chat = new PanelChat(yo.getMiListaPokemon().getMiLista().get(0).getMiLista().getMiLista().get(1).getDescripcion(),mult,nombrePok);
+
+        //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
+        String nombrePokYo = yo.getMiListaPokemon().getMiLista().get(0).getNombre();
+        String pathYo = "src/vista/PkmImg/" +nombrePokYo+".jpeg";
+        pokemonJgd = new PanelFoto(pathYo);
+
+        // ---------------------------------------------------------
+        JPanel movs = new JPanel();
+        movs.setLayout(new GridLayout(2,2));
+        // Cargar lista de movimientos de nuestro pokemon actual
+        String[] movis = new String[4];
+        movis = yo.getMiListaPokemon().getMiLista().get(0).getMiLista().desMovStr();
+
+        bt1.setText(movis[0]);
+        bt2.setText(movis[1]);
+        bt3.setText(movis[2]);
+        bt4.setText(movis[3]);
+
+        movs.add(bt1);
+        movs.add(bt2);
+        movs.add(bt3);
+        movs.add(bt4);
+
+        //-----------------------------------------------------------
+
+
+        Pokemon pok = yo.getMiListaPokemon().getMiLista().get(3-yo.getPokRes());
         String[] tiposPkmJ = new String[2];
         int[] tipInt = pok.getTipo();
         int tip1 = tipInt[0];
@@ -151,22 +205,29 @@ public class Partida implements Observer {
         int ptVidaJ = (int)pok.getVida();
         int vidTotJ = (int)pok.getVidaMax();
 
-        EntrenadorBot riv = (EntrenadorBot) lisEnt.getLista().get(1);
-        String nomPkmR = riv.getNombre();
-        setPokemonIA(nomPkmR);
-        Pokemon pokR = riv.getMiListaPokemon().getMiLista().get(0);
+        Pokemon pokR = riv.getMiListaPokemon().getMiLista().get(3-riv.getPokRes());
         String[] tiposPkmR = new String[2];
+        String nomPkmR = riv.getNombre();
         int[] tipIntR = pokR.getTipo();
         tip1 = tipIntR[0];
         tip2 = tipIntR[1];
         tiposPkmR[0] = Integer.toString(tip1);
         tiposPkmR[1] = Integer.toString(tip2);
-        int ptVidaR = (int)pok.getVida();
-        int vidTotR = (int)pok.getVidaMax();
+        int ptVidaR = (int)pokR.getVida();
+        int vidTotR = (int)pokR.getVidaMax();
 
-        frame.add(new PanelVida(nomPkmR,tiposPkmR,ptVidaR,vidTotR), 0);
-        frame.add(new PanelVida(nomPkmJ,tiposPkmJ,ptVidaJ,vidTotJ), 8);
-        SwingUtilities.updateComponentTreeUI(frame);
+        frame.add(new PanelVida(pokR.getNombre(),tiposPkmR,ptVidaR,vidTotR));
+        frame.add(relleno1);
+        frame.add(pokemonIA);
+        frame.add(relleno2);
+        frame.add(chat);
+        frame.add(relleno3);
+        frame.add(pokemonJgd);
+        frame.add(movs);
+        frame.add(new PanelVida(pok.getNombre(),tiposPkmJ,ptVidaJ,vidTotJ));
+
+
+        frame.setVisible(true);
     }
 
     @Override
@@ -176,7 +237,7 @@ public class Partida implements Observer {
         }
         if(arg.equals(Notificaciones.turnoHecho)){
             ListaEntrenadores lisEnt= ListaEntrenadores.getMiListaEntrenadores();
-            EntrenadorPropio yo = (EntrenadorPropio)lisEnt.getLista().get(0);
+            EntrenadorPropio yo = (EntrenadorPropio)lisEnt.getPersonaje();
             String nomPkmJ = yo.getNombre();
             Pokemon pok = yo.getMiListaPokemon().getMiLista().get(0);
             String[] tiposPkmJ = new String[2];
@@ -188,7 +249,7 @@ public class Partida implements Observer {
             int ptVidaJ = (int)pok.getVida();
             int vidTotJ = (int)pok.getVidaMax();
 
-            EntrenadorBot riv = (EntrenadorBot) lisEnt.getLista().get(1);
+            EntrenadorBot riv = (EntrenadorBot) lisEnt.getRival();
             String nomPkmR = riv.getNombre();
             Pokemon pokR = riv.getMiListaPokemon().getMiLista().get(0);
             String[] tiposPkmR = new String[2];
@@ -200,8 +261,8 @@ public class Partida implements Observer {
             int ptVidaR = (int)pok.getVida();
             int vidTotR = (int)pok.getVidaMax();
             
-            frame.add(new PanelVida(nomPkmR,tiposPkmR,ptVidaR,vidTotR), 0);
-            frame.add(new PanelVida(nomPkmJ,tiposPkmJ,ptVidaJ,vidTotJ), 8);
+            //frame.add(new PanelVida(nomPkmR,tiposPkmR,ptVidaR,vidTotR), 0);
+            //frame.add(new PanelVida(nomPkmJ,tiposPkmJ,ptVidaJ,vidTotJ), 8);
         }
         if(arg.equals(Notificaciones.pierdePropio)){
             //pantalla de que has perdido

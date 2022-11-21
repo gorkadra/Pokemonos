@@ -53,6 +53,15 @@ public class ListaMovi {
 
         }
     }
+    public String[] desMovStr() {
+        String[] res = new String[4];
+        for (int i = 0;i<listaMovi.size();i++) {
+            res[i] = this.listaMovi.get(i).getDescripcion();
+        }
+
+        res[3] = "Pistola Agua (Agua)";
+        return res;
+    }
     public void reset() {
         this.listaMovi.clear();
     }

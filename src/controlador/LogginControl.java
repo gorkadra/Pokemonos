@@ -35,7 +35,9 @@ public class LogginControl implements ActionListener {
                 log.getTxtNom().setText("");
                 log.getTxtNom().requestFocus();
             }else{
+                log.cerrar();
                 entrenador.setNombre(log.getTxtNom().getText());
+
             }
         }else if(log.getSalir().equals(e.getSource())){
             System.exit(0);

@@ -208,6 +208,7 @@ public class Pokemon {
 	}
 	public void atacar(float pPotencia,float pEficiencia,float pAtaque,float pDefensa,float pMoviyPokeMismoTipo) {
 		this.vida = (float) (this.vida - (pMoviyPokeMismoTipo*pEficiencia*(((21.0*pPotencia*pAtaque)/(25.0*pDefensa))+2.0)));
+		System.out.println(vida);
 	}
 	public float getVida() {
 		return this.vida;

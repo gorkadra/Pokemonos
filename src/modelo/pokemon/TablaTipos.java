@@ -22,7 +22,7 @@ public class TablaTipos {
         return tablaTipo[p1][p2];
     }
     public float calcularEfectividad(int linea,int columna) {
-        return TablaTipos.getMiTablaTipos().tablaTipo[linea][columna];
+        return (float)1.0;
     }
     public void resetear() {
         for(int i = 0; i<=3;i++) {

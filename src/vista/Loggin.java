@@ -7,11 +7,12 @@ import java.awt.*;
 
 public class Loggin extends JFrame{
 
+    private JFrame start;
     private JTextField txtNom;
     private JButton reglas, jugar, salir;
 
     public Loggin(){
-        JFrame start = new JFrame();
+        start = new JFrame();
         start.setSize(500,300);
         start.setLayout(new GridLayout(3,1));
 
@@ -43,6 +44,9 @@ public class Loggin extends JFrame{
         start.add(botones);
         start.setVisible(true);
 
+    }
+    public void cerrar(){
+        start.dispose();
     }
 
     public JTextField getTxtNom() {
