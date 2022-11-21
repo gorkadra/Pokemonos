@@ -26,18 +26,18 @@ public class PartidaControl implements ActionListener, Observer {
 
         if(juego.getBt1().equals(e.getSource())){
             lisEnt.pelearConNum(1);
-            juego.cambiado();
+            //juego.cambiado();
         }else if(juego.getBt2().equals(e.getSource())){
             lisEnt.pelearConNum(2);
-            juego.cambiado();
+            //juego.cambiado();
 
         }else if(juego.getBt3().equals(e.getSource())){
             lisEnt.pelearConNum(3);
-            juego.cambiado();
+            //juego.cambiado();
 
         }else if(juego.getBt4().equals(e.getSource())){
-            lisEnt.pelearConNum(4);
-            juego.cambiado();
+            lisEnt.pelearConNum(3);
+            //juego.cambiado();
 
         }
 

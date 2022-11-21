@@ -198,20 +198,30 @@ public class ListaEntrenadores extends Observable {
                     turnoAtaque(miPoke,actualPoke,yoUso);
                     System.out.println(miPoke.getNombre()+" ha usado "+haUsado.getDescripcion());
                     if(actualPoke.getVida() <= 0){
-                        if(enmigoEquipo.hasNext()) {
+                        rival.setPokRes(rival.getPokRes()-1);
+                        if(rival.getPokRes()!=0) {
                             actualPoke = enmigoEquipo.next(); //model.pokemon del contrario
+
+                            setChanged();
+                            notifyObservers(Notificaciones.pokemonCambiado);
                         }
                         else {
                             System.out.println("el entrenador actual se ha quedado sin pokémon");
-
+                            setChanged();
+                            notifyObservers(Notificaciones.pierdeRival);
                             tienePokemonRival = false;
                         }
+                    }else{
+                        setChanged();
+                        notifyObservers(Notificaciones.turnoHecho);
                     }
                 }
                 else {
-                    if(miEquipo.hasNext()) { //si se debilita un model.pokemon, que entre otro
+                    personaje.setPokRes(personaje.getPokRes()-1);
+                    if(personaje.getPokRes()!=0) { //si se debilita un model.pokemon, que entre otro
                         System.out.println("Tu pokemon:");
-                        miPoke = miEquipo.next(); //model.pokemon del rival
+                        miPoke = miEquipo.next(); //pokemon del rival
+
 
                         setChanged();
                         notifyObservers(Notificaciones.pokemonCambiado);
@@ -222,6 +232,7 @@ public class ListaEntrenadores extends Observable {
                         notifyObservers(Notificaciones.pierdePropio);
                     }
                 }
+
             }
             else {
                 System.out.println("Tu primero");
@@ -233,11 +244,14 @@ public class ListaEntrenadores extends Observable {
                     System.out.println("Vida del pokemon rival:"+actualPoke.getVida());
                     Movimiento haUsado = rival.usarMovi(actualPoke);
                     turnoAtaque(miPoke,miPoke,haUsado);
-                    //System.out.println(actualPoke.getNombre()+" ha usado " +haUsado.getDescripcion());
+                    System.out.println(actualPoke.getNombre()+" ha usado " +haUsado.getDescripcion());
                     if(miPoke.getVida() <= 0) {
-                        if(miEquipo.hasNext()) { //si se debilita un model.pokemon que entre el siguiente
-                            System.out.println("Mi model.pokemon:");
+                        personaje.setPokRes(personaje.getPokRes()-1);
+                        if(personaje.getPokRes()!=0) { //si se debilita un .pokemon que entre el siguiente
+                            System.out.println(personaje.getPokRes());
+                            System.out.println("Mi pokemon:");
                             miPoke = miEquipo.next(); //pokemon actual del contrario
+
 
                             setChanged();
                             notifyObservers(Notificaciones.pokemonCambiado);
@@ -247,11 +261,17 @@ public class ListaEntrenadores extends Observable {
                             setChanged();
                             notifyObservers(Notificaciones.pierdePropio);
                         }
+                    }else{
+                        setChanged();
+                        notifyObservers(Notificaciones.turnoHecho);
                     }
+
                 }
                 else {
-                    if(enmigoEquipo.hasNext()) {
+                    rival.setPokRes(rival.getPokRes()-1);
+                    if(rival.getPokRes()!=0) {
                         actualPoke = enmigoEquipo.next(); //pokemon actual del rival
+
                         setChanged();
                         notifyObservers(Notificaciones.pokemonCambiado);
                     }
@@ -268,8 +288,6 @@ public class ListaEntrenadores extends Observable {
             }
         }
         System.out.println(rival.getPokRes());
-        setChanged();
-        notifyObservers(Notificaciones.turnoHecho);
 
     }
 

@@ -160,7 +160,8 @@ public class Partida implements Observer {
         EntrenadorBot riv = lisEnt.getRival();
 
         //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
-        String nombrePok = riv.getMiListaPokemon().getMiLista().get(0).getNombre();
+        System.out.println(riv.getPokRes());
+        String nombrePok = riv.getMiListaPokemon().getMiLista().get(3-riv.getPokRes()).getNombre();
         String path = "src/vista/PkmImg/" +nombrePok+".jpeg";
         System.out.println(path);
         pokemonIA = new PanelFoto(path);
@@ -171,7 +172,8 @@ public class Partida implements Observer {
         PanelChat chat = new PanelChat(yo.getMiListaPokemon().getMiLista().get(0).getMiLista().getMiLista().get(1).getDescripcion(),mult,nombrePok);
 
         //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
-        String nombrePokYo = yo.getMiListaPokemon().getMiLista().get(0).getNombre();
+        System.out.println(yo.getPokRes());
+        String nombrePokYo = yo.getMiListaPokemon().getMiLista().get(3-yo.getPokRes()).getNombre();
         String pathYo = "src/vista/PkmImg/" +nombrePokYo+".jpeg";
         pokemonJgd = new PanelFoto(pathYo);
 
@@ -180,7 +182,7 @@ public class Partida implements Observer {
         movs.setLayout(new GridLayout(2,2));
         // Cargar lista de movimientos de nuestro pokemon actual
         String[] movis = new String[4];
-        movis = yo.getMiListaPokemon().getMiLista().get(0).getMiLista().desMovStr();
+        movis = yo.getMiListaPokemon().getMiLista().get(3-yo.getPokRes()).getMiLista().desMovStr();
 
         bt1.setText(movis[0]);
         bt2.setText(movis[1]);
@@ -233,9 +235,11 @@ public class Partida implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if(arg.equals(Notificaciones.pokemonCambiado)){
+            //JOptionPane.showMessageDialog(null, "Noti pokemon cambiado");
             cambiado();
         }
         if(arg.equals(Notificaciones.turnoHecho)){
+            //JOptionPane.showMessageDialog(null, "Noti turno hecho");
             cambiado();
         }
         if(arg.equals(Notificaciones.pierdePropio)){
