@@ -364,6 +364,11 @@ public class Pokemon {
 				hay = false;
 				loop = 0;
 			}
+			if (this.listaMovi.listaLongi() == 3){
+				int numRandom = (int) (Math.random()*ColeccionMovi.getMiListaMovi().listaLongi());
+				movim = ColeccionMovi.getMiListaMovi().aplicarMovi(numRandom);
+				this.listaMovi.addMovi(movim);
+			}
 		}
 	}
 

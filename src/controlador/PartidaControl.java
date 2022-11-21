@@ -36,7 +36,7 @@ public class PartidaControl implements ActionListener, Observer {
             //juego.cambiado();
 
         }else if(juego.getBt4().equals(e.getSource())){
-            lisEnt.pelearConNum(3);
+            lisEnt.pelearConNum(4);
             //juego.cambiado();
 
         }

@@ -59,7 +59,7 @@ public class ListaMovi {
             res[i] = this.listaMovi.get(i).getDescripcion();
         }
 
-        res[3] = "Pistola Agua (Agua)";
+        //res[3] = "Pistola Agua (Agua)";
         return res;
     }
     public void reset() {
