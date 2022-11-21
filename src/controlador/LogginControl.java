@@ -23,10 +23,11 @@ public class LogginControl implements ActionListener {
 
         if(log.getReglas().equals(e.getSource())){
             String reglas = "                                      --- REGLAS ---\n" +
-                    "1. Al pulsar jugar, se te asginarán 4 pokemon aleatoriamente\n" +
-                    "2. En cada turno podrás elegir uno de tus 4 movimientos disponibles\n" +
-                    "3. Después de ti el enemigo hará lo mismo en tu contra\n" +
-                    "4. El combate acabará cuando uno de los dos se quede sin Pokemon";
+                    "1. Al pulsar jugar, se te asginarán 3 pokemon aleatoriamente\n" +
+                    "2. Los movimientos de cada Pokémon también serán aleatorios\n" +
+                    "3. En cada turno podrás elegir uno de tus 4 movimientos disponibles\n" +
+                    "4. Después de ti el enemigo hará lo mismo en tu contra\n" +
+                    "5. El combate acabará cuando uno de los dos se quede sin Pokemon";
             JOptionPane.showMessageDialog(null, reglas);
 
         }else if(log.getJugar().equals(e.getSource())){
