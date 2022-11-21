@@ -91,8 +91,8 @@ public class Partida implements Observer {
         tip2 = tipIntR[1];
         tiposPkmR[0] = Integer.toString(tip1);
         tiposPkmR[1] = Integer.toString(tip2);
-        int ptVidaR = (int)pok.getVida();
-        int vidTotR = (int)pok.getVidaMax();
+        int ptVidaR = (int)pokR.getVida();
+        int vidTotR = (int)pokR.getVidaMax();
 
         frame.add(new PanelVida(pokR.getNombre(),tiposPkmR,ptVidaR,vidTotR));
         frame.add(relleno1);
@@ -236,33 +236,7 @@ public class Partida implements Observer {
             cambiado();
         }
         if(arg.equals(Notificaciones.turnoHecho)){
-            ListaEntrenadores lisEnt= ListaEntrenadores.getMiListaEntrenadores();
-            EntrenadorPropio yo = (EntrenadorPropio)lisEnt.getPersonaje();
-            String nomPkmJ = yo.getNombre();
-            Pokemon pok = yo.getMiListaPokemon().getMiLista().get(0);
-            String[] tiposPkmJ = new String[2];
-            int[] tipInt = pok.getTipo();
-            int tip1 = tipInt[0];
-            int tip2 = tipInt[1];
-            tiposPkmJ[0] = Integer.toString(tip1);
-            tiposPkmJ[1] = Integer.toString(tip2);
-            int ptVidaJ = (int)pok.getVida();
-            int vidTotJ = (int)pok.getVidaMax();
-
-            EntrenadorBot riv = (EntrenadorBot) lisEnt.getRival();
-            String nomPkmR = riv.getNombre();
-            Pokemon pokR = riv.getMiListaPokemon().getMiLista().get(0);
-            String[] tiposPkmR = new String[2];
-            int[] tipIntR = pokR.getTipo();
-            tip1 = tipIntR[0];
-            tip2 = tipIntR[1];
-            tiposPkmR[0] = Integer.toString(tip1);
-            tiposPkmR[1] = Integer.toString(tip2);
-            int ptVidaR = (int)pok.getVida();
-            int vidTotR = (int)pok.getVidaMax();
-            
-            //frame.add(new PanelVida(nomPkmR,tiposPkmR,ptVidaR,vidTotR), 0);
-            //frame.add(new PanelVida(nomPkmJ,tiposPkmJ,ptVidaJ,vidTotJ), 8);
+            cambiado();
         }
         if(arg.equals(Notificaciones.pierdePropio)){
             //pantalla de que has perdido
