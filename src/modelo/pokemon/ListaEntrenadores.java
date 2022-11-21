@@ -192,7 +192,7 @@ public class ListaEntrenadores extends Observable {
                 Movimiento haUsado = rival.usarMovi(actualPoke);
                 turnoAtaque(actualPoke,miPoke,haUsado);
                 if(miPoke.getVida()>0) { //para saber si tiene vida ese pokémon
-                    System.out.println("Vida nueva del pokémon:"+miPoke.getVida());
+                    //System.out.println("Vida nueva del pokémon:"+miPoke.getVida());
                     miPoke.imprimirMovi();
                     Movimiento yoUso = personaje.usarMoviNum(miPoke, ataque);
                     turnoAtaque(miPoke,actualPoke,yoUso);
