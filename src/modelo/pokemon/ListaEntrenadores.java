@@ -29,141 +29,7 @@ public class ListaEntrenadores extends Observable {
     public void resetear() {
         this.rival = null;
     }
-    /*public void pelear() {
-        //para que no cambie nuestro model.pokemon todo el rato
-        boolean vaBien = true;//para saber si se han debilitado los model.pokemon
-        boolean tienePokemonRival = true;
-        Iterator<Pokemon> miEquipo = personaje.getMiListaPokemon().getIterador(); //para coger los model.pokemon de nuestro equipo
-        Pokemon miPoke = null;
-        int i = 2;
-        int ronda = 1;
-        while(itrEntrenador.hasNext() && vaBien) {
-            tienePokemonRival = true;
-            Entrenador actual = itrEntrenador.next(); //para coger individualmente cada entrenador
-            Iterator<Pokemon> actualEquipo = actual.getMiListaPokemon().getIterador(); //para coger el equipo del entrenador actual
-            Pokemon actualPoke = null;
-            System.out.println("|                                                    |");
-            System.out.println("|Se está jugando la ronda: "+ ronda + "            |");
-            System.out.println("|                                                    |");
-            System.out.println("Tu rival tiene "+ actual.getMiListaPokemon().listaLongitud()+" pokemon");
-            while( vaBien && tienePokemonRival) {
-                if(primeraVez || actualPoke == null) {
-                    if (primeraVez) {
-                        actualPoke = actualEquipo.next();
-                        miPoke = miEquipo.next();
-                        primeraVez = false;
-                    }
-                    else { //para cuando pases de ronda no de null
-                        actualPoke = actualEquipo.next();
-                    }
-                }
-                if(vaBien) {
-                    if(actualPoke.getVeloc() > miPoke.getVeloc()) {
-                        System.out.println("Rival primero");
-                        Movimiento haUsado = actual.usarMovi(actualPoke);
-                        turnoAtaque(actualPoke,miPoke,haUsado);
-                        if(miPoke.getVida()>0) { //para saber si tiene vida ese pokémon
-                            System.out.println("Vida nueva del pokémon:"+miPoke.getVida());
-                            miPoke.imprimirMovi();
-                            Movimiento yoUso = personaje.usarMovi(miPoke);
-                            turnoAtaque(miPoke,actualPoke,yoUso);
-                            System.out.println(miPoke.getNombre()+" ha usado "+haUsado.getDescripcion());
-                            if(actualPoke.getVida() <= 0){
-                                if(actualEquipo.hasNext()) {
-                                    actualPoke = actualEquipo.next(); //model.pokemon del contrario
-                                }
-                                else {
-                                    System.out.println("el entrenador actual se ha quedado sin pokémon");
-                                    ronda = ronda + 1;
-                                    tienePokemonRival = false;
-                                }
-                            }
-                        }
-                        else {
-                            if(miEquipo.hasNext()) { //si se debilita un model.pokemon, que entre otro
-                                System.out.println("Tu model.pokemon:"+ i);
-                                miPoke = miEquipo.next(); //model.pokemon del rival
-                                i = i + 1;
-                            }
-                            else {
-                                vaBien = false;
-                            }
-                        }
-                    }
-                    else {
-                        System.out.println("Tu primero");
-                        miPoke.imprimirMovi();
-                        Movimiento yoUso = personaje.usarMovi(miPoke);
-                        turnoAtaque(miPoke,actualPoke,yoUso);
-                        System.out.println(miPoke.getNombre()+" ha usado"+yoUso.getDescripcion());
-                        if(actualPoke.getVida()>0) {//para saber si el model.pokemon tiene vida
-                            System.out.println("Vida del model.pokemon rival:"+actualPoke.getVida());
-                            Movimiento haUsado = actual.usarMovi(actualPoke);
-                            turnoAtaque(miPoke,miPoke,haUsado);
-                            System.out.println(actualPoke.getNombre()+" ha usado " +haUsado.getDescripcion());
-                            if(miPoke.getVida() <= 0) {
-                                if(miEquipo.hasNext()) { //si se debilita un model.pokemon que entre el siguiente
-                                    System.out.println("Mi model.pokemon:"+ i);
-                                    miPoke = miEquipo.next(); //model.pokemon actual del contrario
-                                    i = i + 1;
-                                }
-                                else {
-                                    vaBien = false;
-                                }
-                            }
-                        }
-                        else {
-                            if(actualEquipo.hasNext()) {
-                                actualPoke = actualEquipo.next(); // model.pokemon actual del rival
-                            }
-                            else {
-                                System.out.println("el entrenador actual no tiene model.pokemon");
-                                personaje.setDinero(actual.getDinero());
-                                System.out.println("dinero:"+ personaje.getDinero());
-                                ronda = ronda + 1;
-                                tienePokemonRival = false;
-                            }
-                        }
-                    }
-                }
-                //notifyObservers(Notifi.Sudokua_ondo);
 
-            }
-            if((ronda==5|| ronda==10||ronda==15)&& vaBien) {
-                if(personaje.getDinero()>=15) {
-                    System.out.println("quieres comprar algo?");
-                    System.out.println("si -> b");
-                    String decision = Teclado.getMiTeclado().leerString();
-                    if(decision.equals("b")){
-                        Movimiento pMovi = Tienda.getMiTienda().comprarMov(); //hay que crear tienda
-                        if(pMovi != null) {
-                            miPoke.imprimirMovi();
-                            System.out.println("que movimiento quieres comprar?");
-                            int opcion = Teclado.getMiTeclado().leerEntero();
-                            miPoke.getMiLista().cambiarMovi(pMovi, opcion);
-                        }
-                    }
-                }
-                else {
-                    System.out.println("No tienes dinero!!");
-                }
-            }
-            if(ronda==10) {  //para recuperar PS de los model.pokemon en la ronda 10
-                int a = 0;
-                System.out.println("---------------------------------------------------------------------------------------");
-                System.out.println("Se han recuperado los model.pokemon, vas a usar de nuevo el primer model.pokemon!!");
-                System.out.println("---------------------------------------------------------------------------------------");
-                while(a<=2) {
-                    this.personaje.getMiListaPokemon().getMiLista().get(a).RecuperarVida(this.personaje.getMiListaPokemon().getMiLista().get(a).getVidaMax());
-                    a++;
-                }
-                miEquipo = personaje.getMiListaPokemon().getIterador();
-                miPoke = miEquipo.next();
-            }
-        }
-        this.resetear();
-        personaje = null;
-    }*/
     public void pelearConNum(int ataque) {
 
         boolean vaBien = true;//para saber si se han debilitado los model.pokemon
@@ -192,16 +58,13 @@ public class ListaEntrenadores extends Observable {
                 Movimiento haUsado = rival.usarMovi(actualPoke);
                 turnoAtaque(actualPoke,miPoke,haUsado);
                 if(miPoke.getVida()>0) { //para saber si tiene vida ese pokémon
-                    //System.out.println("Vida nueva del pokémon:"+miPoke.getVida());
-                    miPoke.imprimirMovi();
                     Movimiento yoUso = personaje.usarMoviNum(miPoke, ataque);
                     turnoAtaque(miPoke,actualPoke,yoUso);
-                    System.out.println(miPoke.getNombre()+" ha usado "+haUsado.getDescripcion());
                     if(actualPoke.getVida() <= 0){
                         rival.setPokRes(rival.getPokRes()-1);
                         if(rival.getPokRes()!=0) {
                             actualPoke = enmigoEquipo.next(); //model.pokemon del contrario
-
+                            rival.setCambio(true);
                             setChanged();
                             notifyObservers(Notificaciones.pokemonCambiado);
                         }
@@ -221,7 +84,7 @@ public class ListaEntrenadores extends Observable {
                     if(personaje.getPokRes()!=0) { //si se debilita un model.pokemon, que entre otro
                         System.out.println("Tu pokemon:");
                         miPoke = miEquipo.next(); //pokemon del rival
-
+                        personaje.setCambio(true);
 
                         setChanged();
                         notifyObservers(Notificaciones.pokemonCambiado);
@@ -236,21 +99,18 @@ public class ListaEntrenadores extends Observable {
             }
             else {
                 System.out.println("Tu primero");
-                miPoke.imprimirMovi();
                 Movimiento yoUso = personaje.usarMoviNum(miPoke,ataque);
                 turnoAtaque(miPoke,actualPoke,yoUso);
-                System.out.println(miPoke.getNombre()+" ha usado"+yoUso.getDescripcion());
                 if(actualPoke.getVida()>0) {//para saber si el model.pokemon tiene vida
-                    System.out.println("Vida del pokemon rival:"+actualPoke.getVida());
                     Movimiento haUsado = rival.usarMovi(actualPoke);
                     turnoAtaque(miPoke,miPoke,haUsado);
-                    System.out.println(actualPoke.getNombre()+" ha usado " +haUsado.getDescripcion());
                     if(miPoke.getVida() <= 0) {
                         personaje.setPokRes(personaje.getPokRes()-1);
                         if(personaje.getPokRes()!=0) { //si se debilita un .pokemon que entre el siguiente
                             System.out.println(personaje.getPokRes());
                             System.out.println("Mi pokemon:");
                             miPoke = miEquipo.next(); //pokemon actual del contrario
+                            personaje.setCambio(true);
 
 
                             setChanged();
@@ -271,6 +131,7 @@ public class ListaEntrenadores extends Observable {
                     rival.setPokRes(rival.getPokRes()-1);
                     if(rival.getPokRes()!=0) {
                         actualPoke = enmigoEquipo.next(); //pokemon actual del rival
+                        rival.setCambio(true);
 
                         setChanged();
                         notifyObservers(Notificaciones.pokemonCambiado);
@@ -287,7 +148,6 @@ public class ListaEntrenadores extends Observable {
                 }
             }
         }
-        System.out.println(rival.getPokRes());
 
     }
 
@@ -322,11 +182,16 @@ public class ListaEntrenadores extends Observable {
             else {
                 p1.setVida(booster);
             }
+            if (personaje.getMiListaPokemon().getMiLista().contains(p1)){
+                personaje.setUsado(haUsado.getDescripcion(),((MovimientoStat) haUsado).getBooster());
+            }
+
         }
         else if(haUsado instanceof MovimientoAtaque) {
             float ataque = ((MovimientoAtaque) haUsado).getPotencia();
             int tipoAtaque = ((MovimientoAtaque) haUsado).getTipo();
-            float eficiencia = TablaTipos.getMiTablaTipos().calcularEfectividad(p1.getTipo()[0], p2.getTipo()[0]);
+            float eficiencia = TablaTipos.getMiTablaTipos().calcularEfectividad(tipoAtaque, p2.getTipo()[0], p2.getTipo()[0]);
+            System.out.println(eficiencia);
             float mismoTipo =(float) 1.0;
             if (((MovimientoAtaque) haUsado).getCat() == true){
                 if(Arrays.asList(p1.getTipo()).contains(tipoAtaque)) {
@@ -346,6 +211,9 @@ public class ListaEntrenadores extends Observable {
                     p2.atacar(ataque,eficiencia,p1.getAtaqueSp(),p2.getDefensaSp(),mismoTipo);
                 }
             }
+            if (personaje.getMiListaPokemon().getMiLista().contains(p1)){
+                personaje.setUsado(haUsado.getDescripcion(), ((MovimientoAtaque) haUsado).getPotencia());
+            }
 
         }
     }
@@ -355,8 +223,6 @@ public class ListaEntrenadores extends Observable {
         int pDinero = 5; //con la tienda
         EntrenadorBot actual = new EntrenadorBot(pNombre,pDinero);
         actual.crearEquipo(cuantosPokemon);
-        System.out.println(actual.getNombre());
-        actual.getMiListaPokemon().imprimirPokemon();
         rival = actual;
 
         setChanged();

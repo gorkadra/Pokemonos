@@ -3,6 +3,7 @@ package iniciador;
 import controlador.PartidaControl;
 import modelo.pokemon.EntrenadorPropio;
 import modelo.pokemon.ListaEntrenadores;
+import modelo.pokemon.TablaTipos;
 import modelo.txt.Lector;
 import vista.Partida;
 
@@ -26,6 +27,7 @@ public class AJugar implements Observer {
         //Cargar los datos del juego
         Lector miLector = new Lector();
         miLector.leerTipos();
+        TablaTipos.getMiTablaTipos().imprimirTabla();
         miLector.leerPokemons();
         miLector.leerAtaques();
 

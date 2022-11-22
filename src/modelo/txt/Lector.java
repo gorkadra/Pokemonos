@@ -25,10 +25,11 @@ public class Lector {
                     linea = Integer.parseInt(listadeLinea[0]);
                     columna = Integer.parseInt(listadeLinea[1]);
                     valor = Float.parseFloat(listadeLinea[2]);
+                    System.out.println(valor);
                     TablaTipos.getMiTablaTipos().setNum(linea,columna,valor);
                 }
                 else{
-                    sc.nextLine();
+
                 }
             }
         }catch (FileNotFoundException e) {
@@ -84,7 +85,6 @@ public class Lector {
                     Pokedex.getMiPokedex().getMiLista().addPokemon(poke);
                 }
                 else{
-                    sc.nextLine();
                 }
             }
         }catch (FileNotFoundException e) {

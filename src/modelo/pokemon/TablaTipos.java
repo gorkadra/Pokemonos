@@ -16,19 +16,32 @@ public class TablaTipos {
     }
     //gainontzeko metodoak
     public void setNum(int linea,int columna,float valor) {
-        TablaTipos.getMiTablaTipos().tablaTipo[linea][columna] = valor;
+        tablaTipo[linea][columna] = valor;
     }
     public float getNum(int p1,int p2) {
         return tablaTipo[p1][p2];
     }
-    public float calcularEfectividad(int linea,int columna) {
-        return (float)1.0;
+    public float calcularEfectividad(int ataque,int t1,int t2) {
+        float total,efe1,efe2;
+        efe1 = tablaTipo[ataque][t1];
+        efe2 = tablaTipo[ataque][t2];
+        total=efe1*efe2;
+        return total;
     }
     public void resetear() {
         for(int i = 0; i<=3;i++) {
             for(int a = 0; a<=3;a++) {
                 tablaTipo[i][a]= 0;
             }
+        }
+    }
+    public void imprimirTabla(){
+        for (int i = 0; i <8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.print(tablaTipo[i][j]);
+                System.out.print(" ");
+            }
+            System.out.println(" ");
         }
     }
 

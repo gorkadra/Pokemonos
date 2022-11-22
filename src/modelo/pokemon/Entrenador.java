@@ -8,14 +8,17 @@ public abstract class Entrenador extends Observable {
     private ListaPokemon listaPokemon;
     private String nombre;
     private int dinero, pokRes;
+    private boolean cambio;
     //constructor
     public Entrenador(String pNombre,int pDinero) {
         this.nombre = pNombre;
         this.dinero = pDinero;
+        this.cambio = false;
         this.listaPokemon = new ListaPokemon();
     }
     public Entrenador(int pDinero) {
         this.dinero = pDinero;
+        this.cambio = false;
         this.listaPokemon = new ListaPokemon();
     }
     //metodos
@@ -83,5 +86,13 @@ public abstract class Entrenador extends Observable {
 
     public void setPokRes(int pokRes) {
         this.pokRes = pokRes;
+    }
+
+    public boolean isCambio() {
+        return cambio;
+    }
+
+    public void setCambio(boolean cambio) {
+        this.cambio = cambio;
     }
 }

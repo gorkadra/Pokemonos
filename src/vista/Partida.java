@@ -45,7 +45,7 @@ public class Partida implements Observer {
         //Mirar que boton se ha pulsado, calcular la efectividad contra el pokemon enemigo y decir el pokemon enemigo
         //Boton pulsado + Calcular efectividad vs pokemon enemigo + nombre pokemon enemigo
         float mult = 1.0F;
-        PanelChat chat = new PanelChat(yo.getMiListaPokemon().getMiLista().get(0).getMiLista().getMiLista().get(1).getDescripcion(),mult,nombrePok);
+        PanelChat chat = new PanelChat("Que comience el combate! Mucha suerte! :D");
 
         //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
         String nombrePokYo = yo.getMiListaPokemon().getMiLista().get(0).getNombre();
@@ -168,8 +168,15 @@ public class Partida implements Observer {
 
         //Mirar que boton se ha pulsado, calcular la efectividad contra el pokemon enemigo y decir el pokemon enemigo
         //Boton pulsado + Calcular efectividad vs pokemon enemigo + nombre pokemon enemigo
-        float mult = 1.0F;
-        PanelChat chat = new PanelChat(yo.getMiListaPokemon().getMiLista().get(0).getMiLista().getMiLista().get(1).getDescripcion(),mult,nombrePok);
+        float mult = yo.getUsadoMul();
+        String usado = yo.getUsadoNom();
+        PanelChat chat;
+        if(riv.isCambio()){
+            chat = new PanelChat(usado,mult,riv.getMiListaPokemon().getMiLista().get(3-riv.getPokRes()-1).getNombre());
+        }else{
+            chat = new PanelChat(usado,mult,nombrePok);
+        }
+
 
         //Coger pokemon actual del campo de batalla y pasar su jpeg a PanelFoto
         System.out.println(yo.getPokRes());
@@ -254,6 +261,7 @@ public class Partida implements Observer {
             lost.add(mensaje,BorderLayout.CENTER);
             lose.add(lost,BorderLayout.CENTER);
             lose.setVisible(true);
+            frame.dispose();
         }
         if(arg.equals(Notificaciones.pierdeRival)){
             //pantalla de que ha perdido el rival
@@ -267,6 +275,7 @@ public class Partida implements Observer {
             won.add(mensaje,BorderLayout.CENTER);
             win.add(won,BorderLayout.CENTER);
             win.setVisible(true);
+            frame.dispose();
         }
     }
 }

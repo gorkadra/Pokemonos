@@ -22,7 +22,40 @@ public class PanelVida extends JPanel {
         gbc.gridwidth = 1;
         this.add(hueco,gbc);
 
-        JLabel tiposPkm = new JLabel("(" + tipos[0] + "," + tipos[1] + ")");
+        String[] tiposStr = new String[2];
+        int i =0;
+        while (i<tipos.length){
+            int pNum = Integer.parseInt(tipos[i]);
+            String res="";
+            if(pNum==0) {
+                res = "fuego";
+            }
+            if(pNum==1) {
+                res = "agua";
+            }
+            if(pNum==2) {
+                res = "planta";
+            }
+            if(pNum==3) {
+                res = "normal";
+            }
+            if(pNum==4) {
+                res = "fantasma";
+            }
+            if (pNum==5){
+                res = "hielo";
+            }
+            if (pNum==6){
+                res = "lucha";
+            }
+            if (pNum==7){
+                res = "tierra";
+            }
+            tiposStr[i]=res;
+            i++;
+        }
+
+        JLabel tiposPkm = new JLabel("(" + tiposStr[0] + "," + tiposStr[1] + ")");
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 2;
         gbc.gridy = 0;
