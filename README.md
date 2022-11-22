@@ -1,4 +1,9 @@
 # Pokemonos
+Par iniciar el juego es necesario ejecutar el archivo .jar que dispone el programa
+El archivo se debe ejecutar en una carpeta que contenga las carpetas tanto de docuemntos de texto (txt) como las carpetas con los archivos de imagen, dado que sin ellos la ejecucion fallaría.
+En el caso que la ejecucion fallase, la otra opcion sería descargar el codigo en algun programa de programacion IntelliJ Eclipse...
+Y sobre el proyecto Run as Java Application el metodo Main de la clase Nagusia. Pero lo mas sencillo sría ejecutar directamente el archivo .jar en una carpeta que contenga el resto de archivos y documentos.
+
 
 Una vez iniciado el juego pantalla de carga
 3 opciones: Reglas Jugar Salir
